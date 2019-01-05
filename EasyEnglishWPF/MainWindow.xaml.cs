@@ -20,6 +20,7 @@ namespace EasyEnglishWPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        //strategia, most,dekorator,iterator
         public MainWindow()
         {
             InitializeComponent();
