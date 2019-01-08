@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace EasyEnglishWPF.Patterns
 {
-    class Bridge
+    public abstract class Bridge
     {
+
     }
 }

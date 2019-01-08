@@ -13,6 +13,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using EasyEnglishWPF.Patterns;
+using EasyEnglishWPF.Classes;
+
 namespace EasyEnglishWPF
 {
     /// <summary>
@@ -24,6 +27,23 @@ namespace EasyEnglishWPF
         public MainWindow()
         {
             InitializeComponent();
+
+            Test t1 = new SingleChoiceTest();
+            Test t2 = new WriteAnswerTest();
+
+            MessageBox.Show(t1.GetResult());
+            MessageBox.Show(t2.GetResult());
+
+            t1 = new ExtendedHint(t1);
+            t2 = new ShortHint(t2);
+
+            Test t3 = new ExtendedHint(new ShortHint(new SingleChoiceTest()));
+
+            MessageBox.Show(t1.GetResult());
+            MessageBox.Show(t2.GetResult());
+            MessageBox.Show(t3.GetResult());
+
+
         }
     }
 }
