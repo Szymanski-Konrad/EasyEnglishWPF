@@ -94,7 +94,11 @@
   <ItemGroup>
     <Compile Include="Patterns\Bridge.cs" />
     <Compile Include="Patterns\Decorator.cs" />
+    <Compile Include="Patterns\IAbstractFactory.cs" />
+    <Compile Include="Patterns\IBuilder.cs" />
+    <Compile Include="Patterns\ILevel.cs" />
     <Compile Include="Patterns\Iterator.cs" />
+    <Compile Include="Patterns\IType.cs" />
     <Compile Include="Patterns\Strategy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
