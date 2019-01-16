@@ -6,9 +6,15 @@ using System.Threading.Tasks;
 
 namespace EasyEnglishWPF.Patterns
 {
+    /// <summary>
+    /// Abstract Factory interface.
+    /// </summary>
     interface IAbstractFactory
     {
-        void SetLevel();
-        void SetType();
+        /// <summary>
+        /// Sets the difficulty level.
+        /// </summary>
+        /// <param name="level">The difficulty level.</param>
+        void SetLevel(int level);
     }
 }
