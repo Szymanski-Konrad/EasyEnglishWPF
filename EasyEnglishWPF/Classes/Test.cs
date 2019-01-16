@@ -13,7 +13,7 @@ namespace EasyEnglishWPF.Classes
         public List<Question> Questions { get; set; }
         public IChoose questionChooseStrategy { get; set; }
         
-        protected string test_name = "test";
+        protected string testName = "test";
 
         public int level { get; set; } 
         public string type { get; set; }

@@ -11,7 +11,7 @@ namespace EasyEnglishWPF.Classes
     {
         public SingleChoiceTest(string strategy)
         {
-            test_name = "Test jednokrotnego wyboru";
+            testName = "Test jednokrotnego wyboru";
 
             switch (strategy)
             {
@@ -39,14 +39,9 @@ namespace EasyEnglishWPF.Classes
             return "choose";
         }
 
-        public void SetLevel()
+        public void SetLevel(int level)
         {
-
-        }
-
-        public void SetType()
-        {
-
+            this.level = level;
         }
     }
 }
