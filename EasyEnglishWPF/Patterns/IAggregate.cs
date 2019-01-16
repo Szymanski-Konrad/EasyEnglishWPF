@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace EasyEnglishWPF.Patterns
 {
+    /// <summary>
+    /// Iterator
+    /// </summary>
     public interface IAggregate
     {
         IIterator CreateStandardIterator();

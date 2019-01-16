@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace EasyEnglishWPF.Patterns
 {
+    /// <summary>
+    /// Most
+    /// </summary>
     public interface ITestDBReader
     {
         string ReadTestData(string testType, string testLvl);

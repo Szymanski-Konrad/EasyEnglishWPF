@@ -10,15 +10,17 @@ namespace EasyEnglishWPF.Classes
     public class ShortHint : Hint
     {
         Question question;
+        private string hint;
 
-        public ShortHint(Question q)
+        public ShortHint(Question q, string h)
         {
             question = q;
+            hint = h;
         }
 
         public override string ShowHint()
         {
-            return "Nieobsługiwany rodzaj testu";
+            return question.ShowHint() + ", " + hint;
         }
     }
 }

@@ -10,15 +10,17 @@ namespace EasyEnglishWPF.Classes
     public class ExtendedHint : Hint
     {
         Question question;
+        private string hint;
 
-        public ExtendedHint(Question q)
+        public ExtendedHint(Question q, string h)
         {
             question = q;
+            hint = h;
         }
 
         public override string ShowHint()
         {
-            return "Nieobsługiwany rodzaj testu";
+            return question.ShowHint() + ", " + hint;
         }
     }
 }
