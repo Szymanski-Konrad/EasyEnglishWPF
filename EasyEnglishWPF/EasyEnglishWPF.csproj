@@ -83,6 +83,10 @@
     </Compile>
     <Compile Include="Classes\AnswerTestReader.cs" />
     <Compile Include="Classes\ExtendedHint.cs" />
+    <Compile Include="Classes\FirstChoose.cs" />
+    <Compile Include="Classes\LastChoose.cs" />
+    <Compile Include="Classes\Question.cs" />
+    <Compile Include="Classes\RandomChoose.cs" />
     <Compile Include="Classes\ShortHint.cs" />
     <Compile Include="Classes\SingleChoiceTest.cs" />
     <Compile Include="Classes\SingleTestReader.cs" />
@@ -97,6 +101,7 @@
     <Compile Include="Patterns\Decorator.cs" />
     <Compile Include="Patterns\IAbstractFactory.cs" />
     <Compile Include="Patterns\IBuilder.cs" />
+    <Compile Include="Patterns\IChoose.cs" />
     <Compile Include="Patterns\ILevel.cs" />
     <Compile Include="Patterns\Iterator.cs" />
     <Compile Include="Patterns\ITestDBReader.cs" />
