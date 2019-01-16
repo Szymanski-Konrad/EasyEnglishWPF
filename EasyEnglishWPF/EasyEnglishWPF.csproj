@@ -85,12 +85,16 @@
     <Compile Include="Classes\ExtendedHint.cs" />
     <Compile Include="Classes\FirstChoose.cs" />
     <Compile Include="Classes\LastChoose.cs" />
+    <Compile Include="Classes\LearnMode.cs" />
+    <Compile Include="Classes\Lecturer.cs" />
     <Compile Include="Classes\Question.cs" />
     <Compile Include="Classes\RandomChoose.cs" />
     <Compile Include="Classes\ShortHint.cs" />
     <Compile Include="Classes\SingleChoiceTest.cs" />
     <Compile Include="Classes\SingleTestReader.cs" />
     <Compile Include="Classes\Test.cs" />
+    <Compile Include="Classes\TestMode.cs" />
+    <Compile Include="Classes\User.cs" />
     <Compile Include="Classes\WriteAnswerTest.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -98,6 +102,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Patterns\ICommand.cs" />
     <Compile Include="Patterns\Hint.cs" />
     <Compile Include="Patterns\IAbstractFactory.cs" />
     <Compile Include="Patterns\Builder.cs" />
