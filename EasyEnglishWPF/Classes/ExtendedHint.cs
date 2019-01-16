@@ -7,31 +7,17 @@ using EasyEnglishWPF.Patterns;
 
 namespace EasyEnglishWPF.Classes
 {
-    public class ExtendedHint : Decorator
+    public class ExtendedHint : Hint
     {
-        Test test;
+        Question question;
 
-        public ExtendedHint(Test t)
+        public ExtendedHint(Question q)
         {
-            test = t;
+            question = q;
         }
 
-        public override string GetResult()
+        public override string ShowHint()
         {
-            return test.GetResult() + " extended";
-        }
-
-        public override string Hint()
-        {
-            if (test is WriteAnswerTest)
-            {
-                return "Rozszerzona podpowiedż dla otwartego testu";
-            }
-            else if (test is SingleChoiceTest)
-            {
-                return "Rozszerzona podpowiedź dla zamknietego testu";
-            }
-
             return "Nieobsługiwany rodzaj testu";
         }
     }

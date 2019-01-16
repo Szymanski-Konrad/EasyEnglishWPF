@@ -7,31 +7,17 @@ using System.Threading.Tasks;
 
 namespace EasyEnglishWPF.Classes
 {
-    public class ShortHint : Decorator
+    public class ShortHint : Hint
     {
-        Test test;
+        Question question;
 
-        public ShortHint(Test t)
+        public ShortHint(Question q)
         {
-            test = t;
+            question = q;
         }
 
-        public override string GetResult()
+        public override string ShowHint()
         {
-            return test.GetResult() + " short";
-        }
-
-        public override string Hint()
-        {
-            if (test is WriteAnswerTest)
-            {
-                return "Krótka podpowiedż dla otwartego testu";
-            }
-            else if (test is SingleChoiceTest)
-            {
-                return "Krótka podpowiedź dla zamknietego testu";
-            }
-
             return "Nieobsługiwany rodzaj testu";
         }
     }

@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace EasyEnglishWPF.Classes
 {
-    class Question
+    public class Question
     {
+        public string Content { get; set; }
+        public string Hit { get; set; }
+    
+        virtual public string ShowHint()
+        {
+            return "Brak podpowiedzi";
+        }
     }
 }

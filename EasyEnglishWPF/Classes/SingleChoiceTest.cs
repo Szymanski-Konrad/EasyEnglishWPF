@@ -9,9 +9,29 @@ namespace EasyEnglishWPF.Classes
 {
     public class SingleChoiceTest : Test, IAbstractFactory
     {
-        public SingleChoiceTest()
+        public SingleChoiceTest(string strategy)
         {
             test_name = "Test jednokrotnego wyboru";
+
+            switch (strategy)
+            {
+                case "first":
+                    questionChooseStrategy = new FirstChoose();
+                    break;
+                case "last":
+                    questionChooseStrategy = new LastChoose();
+                    break;
+                case "random":
+                    questionChooseStrategy = new RandomChoose();
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        public void LoadQuestions()
+        {
+            Questions = questionChooseStrategy.getQuestions();
         }
 
         public override string GetResult()
