@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace EasyEnglishWPF.Patterns
 {
-    public abstract class Bridge
+    public interface ITestDBReader
     {
-
+        string ReadTestData(string testType, string testLvl);
     }
 }

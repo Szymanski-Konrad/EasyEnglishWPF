@@ -81,9 +81,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Classes\AnswerTestReader.cs" />
     <Compile Include="Classes\ExtendedHint.cs" />
     <Compile Include="Classes\ShortHint.cs" />
     <Compile Include="Classes\SingleChoiceTest.cs" />
+    <Compile Include="Classes\SingleTestReader.cs" />
     <Compile Include="Classes\Test.cs" />
     <Compile Include="Classes\WriteAnswerTest.cs" />
     <Compile Include="MainWindow.xaml.cs">
@@ -92,12 +94,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Patterns\Bridge.cs" />
     <Compile Include="Patterns\Decorator.cs" />
     <Compile Include="Patterns\IAbstractFactory.cs" />
     <Compile Include="Patterns\IBuilder.cs" />
     <Compile Include="Patterns\ILevel.cs" />
     <Compile Include="Patterns\Iterator.cs" />
+    <Compile Include="Patterns\ITestDBReader.cs" />
     <Compile Include="Patterns\IType.cs" />
     <Compile Include="Patterns\Strategy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">

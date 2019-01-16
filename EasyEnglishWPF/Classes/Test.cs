@@ -9,10 +9,11 @@ namespace EasyEnglishWPF.Classes
 {
     public abstract class Test : ILevel, IType
     {
+        public ITestDBReader TestReader { get; set; }
 
         protected string test_name = "test";
 
-        public int level { get; set; }
+        public int level { get; set; } 
         public string type { get; set; }
 
         virtual public string Hint()
