@@ -14,7 +14,7 @@ namespace EasyEnglishWPF.Classes
         public IChoose questionChooseStrategy { get; set; }
         public IAggregate aggregate { get; set; }
         
-        protected string test_name = "test";
+        protected string testName = "test";
 
         public int level { get; set; } 
         public string type { get; set; }

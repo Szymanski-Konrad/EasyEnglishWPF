@@ -102,8 +102,8 @@
   <ItemGroup>
     <Compile Include="Patterns\Hint.cs" />
     <Compile Include="Patterns\IAbstractFactory.cs" />
+    <Compile Include="Patterns\Builder.cs" />
     <Compile Include="Patterns\IAggregate.cs" />
-    <Compile Include="Patterns\IBuilder.cs" />
     <Compile Include="Patterns\IChoose.cs" />
     <Compile Include="Patterns\IIterator.cs" />
     <Compile Include="Patterns\ILevel.cs" />

@@ -11,7 +11,7 @@ namespace EasyEnglishWPF.Classes
     {
         public WriteAnswerTest()
         {
-            test_name = "Test własnej odpowiedzi";
+            testName = "Test własnej odpowiedzi";
         }
 
         public override string GetResult()
@@ -19,14 +19,9 @@ namespace EasyEnglishWPF.Classes
             return "write";
         }
 
-        public void SetLevel()
+        public void SetLevel(int level)
         {
-
-        }
-
-        public void SetType()
-        {
-
+            this.level = level;
         }
     }
 }
