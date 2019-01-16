@@ -82,6 +82,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Classes\AnswerTestReader.cs" />
+    <Compile Include="Classes\ConcreteAggregate.cs" />
     <Compile Include="Classes\ExtendedHint.cs" />
     <Compile Include="Classes\FirstChoose.cs" />
     <Compile Include="Classes\LastChoose.cs" />
@@ -90,6 +91,7 @@
     <Compile Include="Classes\ShortHint.cs" />
     <Compile Include="Classes\SingleChoiceTest.cs" />
     <Compile Include="Classes\SingleTestReader.cs" />
+    <Compile Include="Classes\StandardIterator.cs" />
     <Compile Include="Classes\Test.cs" />
     <Compile Include="Classes\WriteAnswerTest.cs" />
     <Compile Include="MainWindow.xaml.cs">
@@ -100,8 +102,10 @@
   <ItemGroup>
     <Compile Include="Patterns\Hint.cs" />
     <Compile Include="Patterns\IAbstractFactory.cs" />
+    <Compile Include="Patterns\IAggregate.cs" />
     <Compile Include="Patterns\IBuilder.cs" />
     <Compile Include="Patterns\IChoose.cs" />
+    <Compile Include="Patterns\IIterator.cs" />
     <Compile Include="Patterns\ILevel.cs" />
     <Compile Include="Patterns\ITestDBReader.cs" />
     <Compile Include="Patterns\IType.cs" />

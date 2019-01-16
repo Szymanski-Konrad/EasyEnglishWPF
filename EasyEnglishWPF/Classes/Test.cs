@@ -12,6 +12,7 @@ namespace EasyEnglishWPF.Classes
         public ITestDBReader TestReader { get; set; }
         public List<Question> Questions { get; set; }
         public IChoose questionChooseStrategy { get; set; }
+        public IAggregate aggregate { get; set; }
         
         protected string test_name = "test";
 
