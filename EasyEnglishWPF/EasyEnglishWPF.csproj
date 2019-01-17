@@ -85,14 +85,11 @@
     <Compile Include="Pages\MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\OpenTestWindow.xaml.cs">
-      <DependentUpon>OpenTestWindow.xaml</DependentUpon>
+    <Compile Include="Pages\StudyModeWindow.xaml.cs">
+      <DependentUpon>StudyModeWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\TestView.xaml.cs">
       <DependentUpon>TestView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\TrainView.xaml.cs">
-      <DependentUpon>TrainView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Switcher.cs" />
     <Page Include="MainWindow.xaml">
@@ -138,15 +135,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\OpenTestWindow.xaml">
+    <Page Include="Pages\StudyModeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\TestView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\TrainView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
