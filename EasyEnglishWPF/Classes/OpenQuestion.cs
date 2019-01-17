@@ -22,7 +22,7 @@ namespace EasyEnglishWPF.Classes
 
         public bool CheckAnswer(string answer)
         {
-            return correct_answer.ToLower() == answer.ToLower();
+            return string.Equals(correct_answer, answer, StringComparison.OrdinalIgnoreCase);
         }
     }
 }
