@@ -21,11 +21,12 @@ namespace EasyEnglishWPF.Pages
     /// </summary>
     public partial class MainMenu : UserControl, ISwitchable
     {
+        public User user;
         public MainMenu()
         {
             InitializeComponent();
-            User user = new User("user");
-            user.SetBuilder(new TestBuilder());
+            user = new User("user");
+            user.SetBuilder(new TestBuilder());            
         }
 
         public void UtilizeState(object state)
@@ -40,7 +41,7 @@ namespace EasyEnglishWPF.Pages
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            Switcher.Switch(new Pages.OpeenTestWindow());
+            Switcher.Switch(new Pages.OpeenTestWindow(ref user));
         }
 
         private void EditDatabase_Click(object sender, RoutedEventArgs e)
