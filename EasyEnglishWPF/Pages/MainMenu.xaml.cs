@@ -34,5 +34,10 @@ namespace EasyEnglishWPF.Pages
         {            
             Switcher.Switch(new Pages.HistoryWindow());
         }
+
+        private void EditDatabase_Click(object sender, RoutedEventArgs e)
+        {
+            Switcher.Switch(new Pages.EditDatabase());
+        }
     }
 }

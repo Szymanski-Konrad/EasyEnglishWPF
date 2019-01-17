@@ -21,5 +21,10 @@ namespace EasyEnglishWPF.Classes
         {
             return false;
         }
+
+        public override string ToString()
+        {
+            return ID + " - " + Content + " - " + Correct;
+        }
     }
 }

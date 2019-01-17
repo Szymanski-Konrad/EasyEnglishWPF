@@ -8,22 +8,35 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <DockPanel HorizontalAlignment="Left" VerticalAlignment="Top" Width="790" Height="440" Margin="5">
         <WrapPanel HorizontalAlignment="Center" DockPanel.Dock="Top" Height="100">
-            <Button Content="Dodaj" Width="100" Height="50" Margin="5" />
-            <Button Content="Usun" Width="100" Height="50" Margin="5" />
-            <Button Content="Edytuj" Width="100" Height="50" Margin="5"/>
+            <Button Content="Dodaj" Width="100" Height="50" Margin="5" Click="Add_Click"/>
+            <Button Content="Usun" Width="100" Height="50" Margin="5"  Click="Remove_Click"/>
+            <Button Content="Edytuj" Width="100" Height="50" Margin="5" Click="Edit_Click"/>
+            <ComboBox Name="ModeCombo" Width="100" Height="50" Margin="5" SelectionChanged="ModeCombo_SelectionChanged">
+                <ComboBoxItem Content="Otwarte"/>
+                <ComboBoxItem Content="Zamkniete" Selector.IsSelected="True"/>
+            </ComboBox>
         </WrapPanel>
         <StackPanel DockPanel.Dock="Left" Width="150">
-            <StackPanel Name="Add">
-                <Label Name="OpenQ" Margin="10,20,10,10"/>
-                <TextBox Name="OpenA" Margin="10,50,10,10"/>
-                <Button Content="Answer" Margin="10"/>
+            <Label Name="ActionLabel" Content="Dodawanie" Margin="10" HorizontalAlignment="Center"/>
+            <StackPanel Name="Add" Visibility="Collapsed">
+                <Label Content="Wpisz treść pytania:" Margin="10"/>
+                <TextBox Name="ContentAdd" Margin="10,10,10,10"/>
+                <Label Content="Wpisz odpowiedź:" Margin="10"/>
+                <TextBox Name="AnswerAdd" Margin="10,10,10,10"/>
+                <Button Content="Dodaj do bazy" Margin="10" Click="AddToDatabase_Click"/>
             </StackPanel>
-            <StackPanel Name="Edit">
-               
-                
+            <StackPanel Name="Edit" Visibility="Collapsed">
+                <Label Content="Pytanie: " Margin="10"/>
+                <TextBox Name="ContentEdit" Margin="10"/>
+                <Label Content="Odpowiedź:" Margin="10"/>
+                <TextBox Name="AnswerEdit" Margin="10"/>
+                <Button Content="Potwierdź" Margin="10" Click="EditDatabase_Click"/>
+            </StackPanel>
+            <StackPanel Name="Remove" Visibility="Hidden">
+                <Button Content="Usuń" Margin="10" Click="RemoveFromDatabase_Click"/>
             </StackPanel>
         </StackPanel>
-        <ListView Name="Data">
+        <ListView Name="Data" ToolTip="ID - Pytanie - Odpowiedź" SelectionChanged="Data_SelectionChanged" Loaded="Data_Loaded">
             
         </ListView>
     </DockPanel>

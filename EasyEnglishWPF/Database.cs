@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using System.Data.SQLite;
 using EasyEnglishWPF.Classes;
+using System.Windows;
 
 namespace EasyEnglishWPF
 {
@@ -76,7 +77,7 @@ namespace EasyEnglishWPF
             var reader = command.ExecuteReader();
             while (reader.Read())
             {
-                question.ID = (int)reader.GetValue(0);
+                question.ID = reader.GetInt32(0);
                 question.Content = (string)reader.GetValue(1);
                 question.Correct = (string)reader.GetValue(2);
             }
@@ -104,7 +105,7 @@ namespace EasyEnglishWPF
             var reader = command.ExecuteReader();
             while (reader.Read())
             {
-                items = (int)reader.GetValue(0);
+                items = reader.GetInt32(0);
             }
 
             connection.Close();
@@ -121,7 +122,7 @@ namespace EasyEnglishWPF
             {
                 list.Add(new OpenQuestion()
                 {
-                    ID = (int)reader.GetValue(0),
+                    ID = reader.GetInt32(0),
                     Content = (string)reader.GetValue(1),
                     Correct = (string)reader.GetValue(2),
                 });
@@ -130,6 +131,16 @@ namespace EasyEnglishWPF
             connection.Close();
 
             return list;
+        }
+
+        public static void RemoveOpenQuestion(int id)
+        {
+            connection.Open();
+            var command = new SQLiteCommand("delete from OpenQuestion where ID = @id", connection);
+            command.Parameters.AddWithValue("@id", id);
+            command.ExecuteNonQuery();
+            connection.Close();
+
         }
         #endregion
 
@@ -153,7 +164,7 @@ namespace EasyEnglishWPF
             var reader = command.ExecuteReader();
             while (reader.Read())
             {
-                question.ID = (int)reader.GetValue(0);
+                question.ID = reader.GetInt32(0);
                 question.Content = (string)reader.GetValue(1);
                 question.Correct = (string)reader.GetValue(2);
             }
@@ -181,7 +192,7 @@ namespace EasyEnglishWPF
             var reader = command.ExecuteReader();
             while (reader.Read())
             {
-                items = (int)reader.GetValue(0);
+                items = reader.GetInt32(0);
             }
 
             connection.Close();
@@ -196,17 +207,27 @@ namespace EasyEnglishWPF
             var reader = command.ExecuteReader();
             while (reader.Read())
             {
-                list.Add(new CloseQuestion()
-                {
-                    ID = (int)reader.GetValue(0),
-                    Content = (string)reader.GetValue(1),
-                    Correct = (string)reader.GetValue(2),
-                });
+                var item = new CloseQuestion();
+                item.ID = reader.GetInt32(0);
+                item.Content = (string)reader.GetValue(1);
+                item.Correct = (string)reader.GetValue(2);
+
+                list.Add(item);
             }
 
             connection.Close();
 
             return list;
+        }
+
+        public static void RemoveCloseQuestion(int id)
+        {
+            connection.Open();
+            var command = new SQLiteCommand("delete from CloseQuestion where ID = @id", connection);
+            command.Parameters.AddWithValue("@id", id);
+            command.ExecuteNonQuery();
+            connection.Close();
+
         }
         #endregion
     }
