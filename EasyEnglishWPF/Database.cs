@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using System.Data.SQLite;
+using EasyEnglishWPF.Classes;
 
 namespace EasyEnglishWPF
 {
@@ -37,6 +38,7 @@ namespace EasyEnglishWPF
         /// <returns>Zwraca listę stringów, które obrazują testy</returns>
         public static List<string> LoadHistory(string user_id)
         {
+            connection.Open();
             var list = new List<string>();
 
             var command = new SQLiteCommand("select * from UserHistory where User = @user", connection);
@@ -48,12 +50,36 @@ namespace EasyEnglishWPF
                 list.Add((string)reader.GetValue(2));
             }
 
+            connection.Close();
+
             return list;
         }
         #endregion
 
         #region OpenQuestions
+        public static void SaveQuestion(OpenQuestion question)
+        {
+            connection.Open();
+            var command = new SQLiteCommand("insert into OpenQuestion (Content,Answer) values (@content,@answer)", connection);
+            command.ExecuteNonQuery();
+            connection.Close();
+        }
 
+        //public static OpenQuestion LoadQuestion()
+        //{
+        //    connection.Open();
+        //    var command = new SQLiteCommand("select * from OpenQuestion")
+        //}
+
+        //public static void EditQuestion(OpenQuestion question)
+        //{
+
+        //}
+
+        //public static int QuestionsCount()
+        //{
+
+        //}
         #endregion
 
         #region CloseQuestions
