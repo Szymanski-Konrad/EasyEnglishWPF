@@ -9,10 +9,10 @@ namespace EasyEnglishWPF.Classes
 {
     public class SingleChoiceTest : Test, IAbstractFactory
     {
-        public SingleChoiceTest(string strategy)
+        public SingleChoiceTest(string type, string strategy)
         {
             testName = "Test jednokrotnego wyboru";
-
+            this.type = type;
             switch (strategy)
             {
                 case "first":
