@@ -16,13 +16,18 @@ using System.Windows.Shapes;
 namespace EasyEnglishWPF.Pages
 {
     /// <summary>
-    /// Interaction logic for MainMenu.xaml
+    /// Interaction logic for HistoryWindow.xaml
     /// </summary>
-    public partial class MainMenu : UserControl, ISwitchable
+    public partial class HistoryWindow : UserControl, ISwitchable
     {
-        public MainMenu()
+        public HistoryWindow()
         {
             InitializeComponent();
+            var list = Database.LoadHistory("user");
+            foreach (string item in list)
+            {
+                historyTextBox.Text += item + "\n";
+            }
         }
 
         public void UtilizeState(object state)
@@ -31,8 +36,8 @@ namespace EasyEnglishWPF.Pages
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
-        {            
-            Switcher.Switch(new Pages.HistoryWindow());
+        {
+            Switcher.Switch(new Pages.MainMenu());
         }
     }
 }
