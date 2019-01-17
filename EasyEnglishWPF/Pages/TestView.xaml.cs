@@ -22,8 +22,8 @@ namespace EasyEnglishWPF.Pages
     /// </summary>
     public partial class TestView : UserControl
     {
-        private string skill = "";
-        private string way = "";
+        private string skill = "2 odpowiedzi";
+        private string way = "pol->ang";
         private string strategy = "";
 
         private string selected_closed = "";
@@ -54,7 +54,8 @@ namespace EasyEnglishWPF.Pages
                 if (iterator.HasNext())
                 {
                     Question question = iterator.Next();
-                    PolishOpen.Content = question.Polish;
+                    if (way == "pol->ang") PolishOpen.Content = question.Polish;
+                    else PolishOpen.Content = question.English;
                 }
             }
             else
@@ -69,7 +70,8 @@ namespace EasyEnglishWPF.Pages
                 if (iterator.HasNext())
                 {
                     Question question = iterator.Next();
-                    Polish.Content = question.Polish;
+                    if (way == "pol->ang") Polish.Content = question.Polish;
+                    else Polish.Content = question.English;
                 }
 
                 PopulateClosedAnswers();
@@ -95,29 +97,49 @@ namespace EasyEnglishWPF.Pages
         private void PopulateClosedAnswers()
         {
             List<string> list = new List<string>();
-            switch (skill)
+            if (way == "pol->ang")
             {
-                case "5 odpowiedzi":
-                    list = Database.LoadFakeAnswersENG(iterator.Current().ID, 4);
-                    
-                    break;
-                case "4 odpowiedzi":
-                    list = Database.LoadFakeAnswersENG(iterator.Current().ID, 3);
-                    
-                    break;
-                case "3 odpowiedzi":
-                    list = Database.LoadFakeAnswersENG(iterator.Current().ID, 2);
-
-                    break;
-                case "2 odpowiedzi":
-                    list = Database.LoadFakeAnswersENG(iterator.Current().ID, 1);
-
-                    break;
-                default:
-                    break;
+                switch (skill)
+                {
+                    case "5 odpowiedzi":
+                        list = Database.LoadFakeAnswersENG(iterator.Current().ID, 4);
+                        break;
+                    case "4 odpowiedzi":
+                        list = Database.LoadFakeAnswersENG(iterator.Current().ID, 3);
+                        break;
+                    case "3 odpowiedzi":
+                        list = Database.LoadFakeAnswersENG(iterator.Current().ID, 2);
+                        break;
+                    case "2 odpowiedzi":
+                        list = Database.LoadFakeAnswersENG(iterator.Current().ID, 1);
+                        break;
+                    default:
+                        break;
+                }
+                list.Add(iterator.Current().English);
+            }
+            else
+            {
+                switch (skill)
+                {
+                    case "5 odpowiedzi":
+                        list = Database.LoadFakeAnswersPL(iterator.Current().ID, 4);
+                        break;
+                    case "4 odpowiedzi":
+                        list = Database.LoadFakeAnswersPL(iterator.Current().ID, 3);
+                        break;
+                    case "3 odpowiedzi":
+                        list = Database.LoadFakeAnswersPL(iterator.Current().ID, 2);
+                        break;
+                    case "2 odpowiedzi":
+                        list = Database.LoadFakeAnswersPL(iterator.Current().ID, 1);
+                        break;
+                    default:
+                        break;
+                }
+                list.Add(iterator.Current().Polish);
             }
 
-            list.Add(iterator.Current().English);
             Options.Children.Clear();
             foreach (string item in list)
             {
@@ -138,19 +160,40 @@ namespace EasyEnglishWPF.Pages
 
         private void Answer_Click(object sender, RoutedEventArgs e)
         {
-            if (iterator.Current().CheckAnswer(selected_closed))
-                test.IncreasePoints();
+            switch (way)
+            {
+                case "pol->ang":
+                    if (iterator.Current().CheckAnswer(selected_closed))
+                        test.IncreasePoints();
 
-            if (iterator.HasNext())
-            {
-                Question question = iterator.Next();
-                Polish.Content = question.Polish;
-                PopulateClosedAnswers();
+                    if (iterator.HasNext())
+                    {
+                        Question question = iterator.Next();
+                        Polish.Content = question.Polish;
+                        PopulateClosedAnswers();
+                    }
+                    else
+                    {
+                        MessageBox.Show(test.GetResult().ToString());
+                    }
+                    break;
+                case "ang->pol":
+                    if (iterator.Current().CheckRevertAnswer(selected_closed))
+                        test.IncreasePoints();
+
+                    if (iterator.HasNext())
+                    {
+                        Question question = iterator.Next();
+                        Polish.Content = question.English;
+                        PopulateClosedAnswers();
+                    }
+                    else
+                    {
+                        MessageBox.Show(test.GetResult().ToString());
+                    }
+                    break;
             }
-            else
-            {
-                MessageBox.Show(test.GetResult().ToString());
-            }
+            
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
@@ -160,18 +203,38 @@ namespace EasyEnglishWPF.Pages
 
         private void AnswerOpen_Click(object sender, RoutedEventArgs e)
         {
-            if (iterator.Current().CheckAnswer(Answer_Eng.Text))
-                test.IncreasePoints();
+            switch (way)
+            {
+                case "pol->ang":
+                    if (iterator.Current().CheckAnswer(Answer_Eng.Text))
+                        test.IncreasePoints();
 
-            if (iterator.HasNext())
-            {
-                Question question = iterator.Next();
-                PolishOpen.Content = question.Polish;
+                    if (iterator.HasNext())
+                    {
+                        Question question = iterator.Next();
+                        PolishOpen.Content = question.Polish;
+                    }
+                    else
+                    {
+                        MessageBox.Show(test.GetResult().ToString());
+                    }
+                    break;
+                case "ang->pol":
+                    if (iterator.Current().CheckRevertAnswer(Answer_Eng.Text))
+                        test.IncreasePoints();
+
+                    if (iterator.HasNext())
+                    {
+                        Question question = iterator.Next();
+                        PolishOpen.Content = question.English;
+                    }
+                    else
+                    {
+                        MessageBox.Show(test.GetResult().ToString());
+                    }
+                    break;
             }
-            else
-            {
-                MessageBox.Show(test.GetResult().ToString());
-            }
+            
         }
     }
 }

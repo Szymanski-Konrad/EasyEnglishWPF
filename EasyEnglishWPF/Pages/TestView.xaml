@@ -10,8 +10,8 @@
         <Grid Name="OptionGrid" Height="400" Width="800">
             <Label Content="Kierunek testu: " HorizontalAlignment="Left" Margin="25,69,0,0" VerticalAlignment="Top"/>
             <Label Content="Trudność testu: " HorizontalAlignment="Left" Margin="24,151,0,0" VerticalAlignment="Top"/>
-            <RadioButton Checked="Way_Checked" GroupName="way" Content="pol-ang" HorizontalAlignment="Left" Margin="146,75,0,0" VerticalAlignment="Top" IsChecked="True"/>
-            <RadioButton Checked="Way_Checked" GroupName="way" Content="ang-pol" HorizontalAlignment="Left" Margin="249,75,0,0" VerticalAlignment="Top"/>
+            <RadioButton Checked="Way_Checked" GroupName="way" Content="pol->ang" HorizontalAlignment="Left" Margin="146,75,0,0" VerticalAlignment="Top" IsChecked="True"/>
+            <RadioButton Checked="Way_Checked" GroupName="way" Content="ang->pol" HorizontalAlignment="Left" Margin="249,75,0,0" VerticalAlignment="Top"/>
             <RadioButton Checked="Skill_Checked" GroupName="skill" Content="2 odpowiedzi" HorizontalAlignment="Left" Margin="132,157,0,0" VerticalAlignment="Top" IsChecked="True"/>
             <RadioButton Checked="Skill_Checked" GroupName="skill" Content="3 odpowiedzi" HorizontalAlignment="Left" Margin="249,157,0,0" VerticalAlignment="Top"/>
             <RadioButton Checked="Skill_Checked" GroupName="skill" Content="4 odpowiedzi" HorizontalAlignment="Left" Margin="372,157,0,0" VerticalAlignment="Top"/>

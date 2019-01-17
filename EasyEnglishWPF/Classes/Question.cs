@@ -22,6 +22,11 @@ namespace EasyEnglishWPF.Classes
             return string.Equals(English, answer, StringComparison.OrdinalIgnoreCase);
         }
 
+        public bool CheckRevertAnswer(string answer)
+        {
+            return string.Equals(Polish, answer, StringComparison.OrdinalIgnoreCase);
+        }
+
         public override string ToString()
         {
             return ID + " - " + Polish + " - " + English;
