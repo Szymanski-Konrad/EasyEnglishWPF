@@ -20,14 +20,14 @@ namespace EasyEnglishWPF.Pages
     /// <summary>
     /// Interaction logic for OpeenTestWindow.xaml
     /// </summary>
-    public partial class OpeenTestWindow : UserControl, ISwitchable
+    public partial class StudyModeWindow : UserControl, ISwitchable
     {
         public Test test;
 
         private bool canNext = false;
         private IIterator iterator;
 
-        public OpeenTestWindow(ref User user)
+        public StudyModeWindow(ref User user)
         {
             InitializeComponent();
             user.CreateTest("open", "last");
