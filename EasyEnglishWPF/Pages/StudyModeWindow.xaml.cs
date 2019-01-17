@@ -22,6 +22,7 @@ namespace EasyEnglishWPF.Pages
     /// </summary>
     public partial class StudyModeWindow : UserControl, ISwitchable
     {
+        private string way = "pol->ang";
         public Test test;
 
         private bool canNext = false;
@@ -30,7 +31,7 @@ namespace EasyEnglishWPF.Pages
         public StudyModeWindow(ref User user)
         {
             InitializeComponent();
-            user.CreateTest("open", "last");
+            user.CreateTest("open", "random");
             test = user.GetTest();
 
             ConcreteAggregate concreteAggregate = new ConcreteAggregate();
@@ -40,10 +41,16 @@ namespace EasyEnglishWPF.Pages
             if (iterator.HasNext())
             {
                 Question question = (Question)iterator.Next();
-                questionLabel.Content = question.Polish;
+                if (way == "pol->ang")
+                {
+                    questionLabel.Content = question.Polish;
+                }
+                else
+                {
+                    questionLabel.Content = question.English;
+                }
             }
         }
-
         public void UtilizeState(object state)
         {
             throw new NotImplementedException();
@@ -56,15 +63,31 @@ namespace EasyEnglishWPF.Pages
 
         private void CheckBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (iterator.Current().English == answerBox.Text)
+            if (way == "pol->ang")
             {
-                checkBtn.Background = Brushes.Green;
-                canNext = true;
+                if (iterator.Current().English == answerBox.Text)
+                {
+                    checkBtn.Background = Brushes.Green;
+                    canNext = true;
+                }
+                else
+                {
+                    checkBtn.Background = Brushes.Red;
+                    canNext = false;
+                }
             }
-            else
+            else if (way == "ang->pol")
             {
-                checkBtn.Background = Brushes.Red;
-                canNext = false;
+                if (iterator.Current().Polish == answerBox.Text)
+                {
+                    checkBtn.Background = Brushes.Green;
+                    canNext = true;
+                }
+                else
+                {
+                    checkBtn.Background = Brushes.Red;
+                    canNext = false;
+                }
             }
         }
 
@@ -75,7 +98,14 @@ namespace EasyEnglishWPF.Pages
                 if (iterator.HasNext())
                 {
                     Question question = (Question)iterator.Next();
-                    questionLabel.Content = question.Polish;
+                    if (way == "pol->ang")
+                    {
+                        questionLabel.Content = question.Polish;
+                    }
+                    else
+                    {
+                        questionLabel.Content = question.English;
+                    }
                 }
                 else
                 {
@@ -88,6 +118,43 @@ namespace EasyEnglishWPF.Pages
                 MessageBox.Show("You can't go further.");
             }
             checkBtn.Background = Brushes.LightGray;
+        }
+
+        private void Way_Checked(object sender, RoutedEventArgs e)
+        {
+            way = (sender as RadioButton).Content.ToString();
+            if (iterator != null)
+            {
+                Question question = (Question)iterator.Current();
+                if (way == "pol->ang")
+                {
+                    questionLabel.Content = question.Polish;
+                    if (iterator.Current().English == answerBox.Text)
+                    {
+                        checkBtn.Background = Brushes.Green;
+                        canNext = true;
+                    }
+                    else
+                    {
+                        checkBtn.Background = Brushes.Red;
+                        canNext = false;
+                    }
+                }
+                else
+                {
+                    questionLabel.Content = question.English;
+                    if (iterator.Current().Polish == answerBox.Text)
+                    {
+                        checkBtn.Background = Brushes.Green;
+                        canNext = true;
+                    }
+                    else
+                    {
+                        checkBtn.Background = Brushes.Red;
+                        canNext = false;
+                    }
+                }
+            }
         }
     }
 }

@@ -30,7 +30,7 @@ namespace EasyEnglishWPF.Patterns
                         || strategy == "last"
                         || strategy == "random")
                     {
-                        test = new WriteAnswerTest(strategy);
+                        test = new WriteAnswerTest(type, strategy);
                     }
                 }
                 if (type == "close")
@@ -39,7 +39,7 @@ namespace EasyEnglishWPF.Patterns
                         || strategy == "last"
                         || strategy == "random")
                     {
-                        test = new SingleChoiceTest(strategy);
+                        test = new SingleChoiceTest(type, strategy);
                     }
                 }
             }
