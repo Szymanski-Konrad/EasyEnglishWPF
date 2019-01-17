@@ -39,9 +39,9 @@ namespace EasyEnglishWPF.Pages
             Switcher.Switch(new Pages.HistoryWindow());
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void StudyMode_Click(object sender, RoutedEventArgs e)
         {
-            Switcher.Switch(new Pages.OpeenTestWindow(ref user));
+            Switcher.Switch(new Pages.TestView(ref user));
         }
 
         private void EditDatabase_Click(object sender, RoutedEventArgs e)
@@ -49,14 +49,9 @@ namespace EasyEnglishWPF.Pages
             Switcher.Switch(new Pages.EditDatabase());
         }
 
-        private void Test_Click(object sender, RoutedEventArgs e)
+        private void TestMode_Click(object sender, RoutedEventArgs e)
         {
             Switcher.Switch(new Pages.TestView(ref user));
-        }
-
-        private void Training_Click(object sender, RoutedEventArgs e)
-        {
-            Switcher.Switch(new Pages.TrainView());
         }
     }
 }

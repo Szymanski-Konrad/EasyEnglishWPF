@@ -7,10 +7,8 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-        <Button Height="100" Width="200" Margin="10" Click="Test_Click">Test</Button>
-        <Button Height="100" Width="200" Margin="10" Click="Training_Click">Trening</Button>
-        <Button Height="100" Width="200" Margin="10" Click="Button_Click_1">Test otwarty</Button>
-        <Button Height="100" Width="200" Margin="10">Test zamkniety</Button>
+        <Button Height="100" Width="200" Margin="10" Click="TestMode_Click">Tryb Testu</Button>
+        <Button Height="100" Width="200" Margin="10" Click="StudyMode_Click">Tryb Nauki</Button>
         <Button Height="100" Width="200" Margin="10" Click="Button_Click">Historia testów</Button>
         <Button Height="100" Width="200" Margin="10" Click="EditDatabase_Click">Edycja bazy testów</Button>
     </WrapPanel>
