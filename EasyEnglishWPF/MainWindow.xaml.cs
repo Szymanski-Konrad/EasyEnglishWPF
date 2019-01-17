@@ -1,20 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-
-using EasyEnglishWPF.Patterns;
-using EasyEnglishWPF.Classes;
 
 namespace EasyEnglishWPF
 {
@@ -23,26 +9,28 @@ namespace EasyEnglishWPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        //strategia, most,dekorator,iterator
         public MainWindow()
         {
             InitializeComponent();
 
-            //Test t1 = new SingleChoiceTest();
-            //Test t2 = new WriteAnswerTest();
+            Switcher.pageSwitcher = this;
+            Switcher.Switch(new Pages.MainMenu());
+        }
 
-            //MessageBox.Show(t1.GetResult());
-            //MessageBox.Show(t2.GetResult());
+        public void Navigate(UserControl nextPage)
+        {
+            this.Content = nextPage;
+        }
 
-            //t1 = new ExtendedHint(t1);
-            //t2 = new ShortHint(t2);
+        public void Navigate(UserControl nextPage, object state)
+        {
+            this.Content = nextPage;
+            ISwitchable s = nextPage as ISwitchable;
 
-            //Test t3 = new ExtendedHint(new ShortHint(new SingleChoiceTest()));
-
-            //MessageBox.Show(t1.GetResult());
-            //MessageBox.Show(t2.GetResult());
-            //MessageBox.Show(t3.GetResult());
-
+            if (s != null)
+                s.UtilizeState(state);
+            else
+                throw new ArgumentException("NextPage is not ISwitchable! " + nextPage.Name.ToString());
         }
     }
 }
