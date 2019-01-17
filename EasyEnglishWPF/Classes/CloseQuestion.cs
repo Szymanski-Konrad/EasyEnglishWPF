@@ -9,12 +9,16 @@ namespace EasyEnglishWPF.Classes
     public class CloseQuestion : Question
     {
         private List<string> answers;
-        private int correct_index;
-
+        private int index;
 
         public CloseQuestion()
         {
             answers = new List<string>();
+        }
+
+        public void SetIndex(int number)
+        {
+            index = number;
         }
 
         public void PopulateAnswers(List<string> list)
@@ -25,14 +29,9 @@ namespace EasyEnglishWPF.Classes
             }
         }
 
-        public void SetCorrect(int index)
+        public bool CheckAnswer(string answer)
         {
-            correct_index = index;
-        }
-
-        public bool CheckAnswer(int index)
-        {
-            return index == correct_index;
+            return index == answers.IndexOf(answer);
         }
 
     }
