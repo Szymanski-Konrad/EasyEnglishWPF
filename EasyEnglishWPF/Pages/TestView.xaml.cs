@@ -44,6 +44,7 @@ namespace EasyEnglishWPF.Pages
                 user.CreateTest("open", strategy);
             else
                 user.CreateTest("close", strategy);
+
             test = user.GetTest();
             ConcreteAggregate concreteAggregate = new ConcreteAggregate();
             concreteAggregate.AddQuestions(test.questionChooseStrategy.getQuestions());
