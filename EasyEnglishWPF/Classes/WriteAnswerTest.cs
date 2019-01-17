@@ -9,19 +9,40 @@ namespace EasyEnglishWPF.Classes
 {
     public class WriteAnswerTest : Test, IAbstractFactory
     {
-        public WriteAnswerTest()
+        public WriteAnswerTest(string strategy)
         {
             testName = "Test własnej odpowiedzi";
+
+            switch (strategy)
+            {
+                case "first":
+                    questionChooseStrategy = new FirstChoose();
+                    break;
+                case "last":
+                    questionChooseStrategy = new LastChoose();
+                    break;
+                case "random":
+                    questionChooseStrategy = new RandomChoose();
+                    break;
+                default:
+                    break;
+            }
+            LoadQuestions();
         }
 
-        public override int GetResult()
+        public void LoadQuestions()
         {
-            return points;
+            Questions = questionChooseStrategy.GetQuestions();
         }
 
         public override void IncreasePoints()
         {
             points++;
+        }
+
+        public override int GetResult()
+        {
+            return points;
         }
 
         public void SetLevel(int level)
