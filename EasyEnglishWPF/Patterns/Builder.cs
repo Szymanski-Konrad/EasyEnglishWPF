@@ -26,7 +26,12 @@ namespace EasyEnglishWPF.Patterns
             {
                 if (type == "open")
                 {
-                    test = new WriteAnswerTest();
+                    if (strategy == "first"
+                        || strategy == "last"
+                        || strategy == "random")
+                    {
+                        test = new WriteAnswerTest(strategy);
+                    }
                 }
                 if (type == "close")
                 {
