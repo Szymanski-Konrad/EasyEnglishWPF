@@ -29,5 +29,10 @@ namespace EasyEnglishWPF.Pages
         {
             throw new NotImplementedException();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {            
+            Switcher.Switch(new Pages.HistoryWindow());
+        }
     }
 }
