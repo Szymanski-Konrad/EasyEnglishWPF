@@ -99,22 +99,11 @@ namespace EasyEnglishWPF.Pages
             {
                 case "5 odpowiedzi":
                     list = Database.LoadFakeAnswersENG(iterator.Current().ID, 4);
-                    list.Add(iterator.Current().English);
-                    Options.Children.Clear();
-                    foreach (string item in list)
-                    {
-                        RadioButton radioButton = new RadioButton()
-                        {
-                            Content = item,
-                            GroupName = "test"
-                        };
-                        radioButton.Checked += RadioButton_Checked;
-                        Options.Children.Add(radioButton);
-                    }
+                    
                     break;
                 case "4 odpowiedzi":
                     list = Database.LoadFakeAnswersENG(iterator.Current().ID, 3);
-
+                    
                     break;
                 case "3 odpowiedzi":
                     list = Database.LoadFakeAnswersENG(iterator.Current().ID, 2);
@@ -126,6 +115,19 @@ namespace EasyEnglishWPF.Pages
                     break;
                 default:
                     break;
+            }
+
+            list.Add(iterator.Current().English);
+            Options.Children.Clear();
+            foreach (string item in list)
+            {
+                RadioButton radioButton = new RadioButton()
+                {
+                    Content = item,
+                    GroupName = "test"
+                };
+                radioButton.Checked += RadioButton_Checked;
+                Options.Children.Add(radioButton);
             }
         }
 

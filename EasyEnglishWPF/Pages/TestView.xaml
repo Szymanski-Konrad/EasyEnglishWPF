@@ -7,19 +7,19 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" Background="AliceBlue">
     <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-        <Grid Name="OptionGrid" Height="450" Width="800">
+        <Grid Name="OptionGrid" Height="400" Width="800">
             <Label Content="Kierunek testu: " HorizontalAlignment="Left" Margin="25,69,0,0" VerticalAlignment="Top"/>
             <Label Content="Trudność testu: " HorizontalAlignment="Left" Margin="24,151,0,0" VerticalAlignment="Top"/>
-            <RadioButton Checked="Way_Checked" GroupName="way" Content="pol-ang" HorizontalAlignment="Left" Margin="146,75,0,0" VerticalAlignment="Top"/>
+            <RadioButton Checked="Way_Checked" GroupName="way" Content="pol-ang" HorizontalAlignment="Left" Margin="146,75,0,0" VerticalAlignment="Top" IsChecked="True"/>
             <RadioButton Checked="Way_Checked" GroupName="way" Content="ang-pol" HorizontalAlignment="Left" Margin="249,75,0,0" VerticalAlignment="Top"/>
-            <RadioButton Checked="Skill_Checked" GroupName="skill" Content="2 odpowiedzi" HorizontalAlignment="Left" Margin="132,157,0,0" VerticalAlignment="Top"/>
+            <RadioButton Checked="Skill_Checked" GroupName="skill" Content="2 odpowiedzi" HorizontalAlignment="Left" Margin="132,157,0,0" VerticalAlignment="Top" IsChecked="True"/>
             <RadioButton Checked="Skill_Checked" GroupName="skill" Content="3 odpowiedzi" HorizontalAlignment="Left" Margin="249,157,0,0" VerticalAlignment="Top"/>
             <RadioButton Checked="Skill_Checked" GroupName="skill" Content="4 odpowiedzi" HorizontalAlignment="Left" Margin="372,157,0,0" VerticalAlignment="Top"/>
             <RadioButton Checked="Skill_Checked" GroupName="skill" Content="5 odpowiedzi" HorizontalAlignment="Left" Margin="493,157,0,0" VerticalAlignment="Top"/>
             <RadioButton Checked="Skill_Checked" GroupName="skill" Content="test otwarty" HorizontalAlignment="Left" Margin="616,157,0,0" VerticalAlignment="Top"/>
             <Button Content="Uruchom test" HorizontalAlignment="Left" Margin="311,269,0,0" VerticalAlignment="Top" Width="120" Height="40" Click="Run_Test"/>
             <Label Content="Strategia: " HorizontalAlignment="Left" Margin="24,203,0,0" VerticalAlignment="Top"/>
-            <RadioButton Checked="Strategy_Checked" GroupName="strategy" Content="Pierwsze" Tag="first" HorizontalAlignment="Left" Margin="117,209,0,0" VerticalAlignment="Top"/>
+            <RadioButton Checked="Strategy_Checked" GroupName="strategy" Content="Pierwsze" Tag="first" HorizontalAlignment="Left" Margin="117,209,0,0" VerticalAlignment="Top" IsChecked="True"/>
             <RadioButton Checked="Strategy_Checked" GroupName="strategy" Content="Ostatnie" Tag="last" HorizontalAlignment="Left" Margin="249,214,0,0" VerticalAlignment="Top"/>
             <RadioButton Checked="Strategy_Checked" GroupName="strategy" Content="Losowe" Tag="random" HorizontalAlignment="Left" Margin="372,212,0,0" VerticalAlignment="Top"/>
         </Grid>
