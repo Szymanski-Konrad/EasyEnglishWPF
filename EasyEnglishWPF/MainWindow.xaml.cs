@@ -6,6 +6,14 @@ using System.Windows.Controls;
 
 namespace EasyEnglishWPF
 {
+    //TODO: Zmiana języka w trybie testu
+    //TODO: Zmiana języka w trybie nauki
+    //TODO: Podpowiedzi w obu trybach
+    //TODO: Poprawić historie testów
+    //TODO: Zrobić dokumentacje
+
+
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -14,18 +22,6 @@ namespace EasyEnglishWPF
         public MainWindow()
         {
             InitializeComponent();
-
-            //Database.SaveHistory("user", "nowy test");
-            //Database.SaveHistory("user", "nowy test");
-            //Database.SaveHistory("user", "nowy test");
-            //Database.SaveHistory("user", "nowy test");
-            //Database.SaveHistory("user", "nowy test");
-
-            //var list = Database.LoadHistory("user");
-
-            //foreach (var item in list)
-            //    MessageBox.Show(item);
-
             Switcher.pageSwitcher = this;
             Switcher.Switch(new Pages.MainMenu());
         }
