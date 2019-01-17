@@ -18,6 +18,11 @@ namespace EasyEnglishWPF.Classes
             this.id = id;
         }
 
+        public string GetID()
+        {
+            return id;
+        }
+
         public void SetBuilder(Builder builder)
         {
             this.builder = builder;

@@ -23,5 +23,10 @@ namespace EasyEnglishWPF.Classes
         public abstract void IncreasePoints();
 
         public abstract int GetResult();
+
+        public override string ToString()
+        {
+            return testName + ": " + points + "/10  ";
+        }
     }
 }
