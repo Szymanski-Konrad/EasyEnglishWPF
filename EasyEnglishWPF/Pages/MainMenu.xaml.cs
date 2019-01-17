@@ -41,7 +41,7 @@ namespace EasyEnglishWPF.Pages
 
         private void StudyMode_Click(object sender, RoutedEventArgs e)
         {
-            Switcher.Switch(new Pages.TestView(ref user));
+            Switcher.Switch(new Pages.StudyModeWindow(ref user));
         }
 
         private void EditDatabase_Click(object sender, RoutedEventArgs e)
