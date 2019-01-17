@@ -7,12 +7,12 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" Background="AliceBlue">
     <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-        <StackPanel Name="Open" HorizontalAlignment="Center" Visibility="Hidden">
+        <StackPanel Name="Open" HorizontalAlignment="Center" Visibility="Collapsed">
             <Label Name="OpenQ" Margin="10,20,10,10"/>
             <TextBox Name="OpenA" Margin="10,50,10,10"/>
             <Button Content="Answer" Margin="10" Click="OpenAnswer_Click"/>
         </StackPanel>
-        <StackPanel Name="Close" HorizontalAlignment="Center" Visibility="Hidden">
+        <StackPanel Name="Close" HorizontalAlignment="Center" Visibility="Collapsed">
             <Label Name="CloseQ" Margin="10,20,10,10"/>
             <StackPanel Name="Options" Margin="10"/>
             <Button Content="Answer" Margin="10" Click="CloseAnswer_Click"/>
