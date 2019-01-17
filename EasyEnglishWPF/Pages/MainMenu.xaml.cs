@@ -27,7 +27,6 @@ namespace EasyEnglishWPF.Pages
             InitializeComponent();
             user = new User("user");
             user.SetBuilder(new TestBuilder());
-            user.CreateTest("close", "first");
         }
 
         public void UtilizeState(object state)
