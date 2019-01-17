@@ -41,6 +41,8 @@ namespace EasyEnglishWPF.Pages
             if (iterator.HasNext())
             {
                 Question question = (Question)iterator.Next();
+                question = new ExtendedHint(new ShortHint(question, Database.GetSimpleHint(question.ID)), Database.GetBetterHint(question.ID));
+                questionLabel.ToolTip = question.ShowHint();
                 if (way == "pol->ang")
                 {
                     questionLabel.Content = question.Polish;
@@ -91,13 +93,15 @@ namespace EasyEnglishWPF.Pages
             }
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Next_Click(object sender, RoutedEventArgs e)
         {
             if (canNext)
             {
                 if (iterator.HasNext())
                 {
                     Question question = (Question)iterator.Next();
+                    question = new ExtendedHint(new ShortHint(question, Database.GetSimpleHint(question.ID)), Database.GetBetterHint(question.ID));
+                    questionLabel.ToolTip = question.ShowHint();
                     if (way == "pol->ang")
                     {
                         questionLabel.Content = question.Polish;
@@ -126,6 +130,9 @@ namespace EasyEnglishWPF.Pages
             if (iterator != null)
             {
                 Question question = (Question)iterator.Current();
+                question = new ExtendedHint(new ShortHint(question, Database.GetSimpleHint(question.ID)), Database.GetBetterHint(question.ID));
+                questionLabel.ToolTip = question.ShowHint();
+
                 if (way == "pol->ang")
                 {
                     questionLabel.Content = question.Polish;

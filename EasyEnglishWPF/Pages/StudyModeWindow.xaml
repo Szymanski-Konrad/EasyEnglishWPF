@@ -11,7 +11,7 @@
         <TextBox x:Name="answerBox" HorizontalAlignment="Left" Height="23" Margin="341,180,0,0" TextWrapping="Wrap" Text="Answer" VerticalAlignment="Top" Width="120"/>
         <Button Content="Back" HorizontalAlignment="Left" Margin="81,353,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
         <Button x:Name="checkBtn" Content="Check" HorizontalAlignment="Left" Margin="315,255,0,0" VerticalAlignment="Top" Width="75" Click="CheckBtn_Click"/>
-        <Button Content="Next" HorizontalAlignment="Left" Margin="420,255,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
+        <Button Content="Next" HorizontalAlignment="Left" Margin="420,255,0,0" VerticalAlignment="Top" Width="75" Click="Next_Click"/>
         <Label Content="Language" HorizontalAlignment="Left" Margin="120,101,0,0" VerticalAlignment="Top"/>
         <RadioButton Checked="Way_Checked" GroupName="way" Content="pol->ang" HorizontalAlignment="Left" Margin="100,139,0,0" VerticalAlignment="Top" IsChecked="True"/>
         <RadioButton Checked="Way_Checked" GroupName="way" Content="ang->pol" HorizontalAlignment="Left" Margin="203,139,0,0" VerticalAlignment="Top"/>
