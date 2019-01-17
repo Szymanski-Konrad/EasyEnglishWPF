@@ -31,11 +31,13 @@ namespace EasyEnglishWPF.Pages
         private Test test;
         private User user;
         private IIterator iterator;
+        private Random random;
 
         public TestView(ref User u)
         {
             InitializeComponent();
             user = u;
+            random = new Random();
         }
 
         private void Run_Test(object sender, RoutedEventArgs e)
@@ -49,13 +51,28 @@ namespace EasyEnglishWPF.Pages
                 test = user.GetTest();
                 ConcreteAggregate concreteAggregate = new ConcreteAggregate();
                 concreteAggregate.AddQuestions(test.questionChooseStrategy.GetQuestions());
-                iterator = concreteAggregate.CreateStandardIterator();
+                int x = random.Next(3);
+                switch(x)
+                {
+                    case 0:
+                        iterator = concreteAggregate.CreateEdgeIterator();
+                        break;
+                    case 1:
+                        iterator = concreteAggregate.CreateRandomIterator();
+                        break;
+                    case 2:
+                        iterator = concreteAggregate.CreateStandardIterator();
+                        break;
+                        
+                }
 
                 if (iterator.HasNext())
                 {
                     Question question = iterator.Next();
+                    question = new ExtendedHint(new ShortHint(question, Database.GetSimpleHint(question.ID)), Database.GetBetterHint(question.ID));
                     if (way == "pol->ang") PolishOpen.Content = question.Polish;
                     else PolishOpen.Content = question.English;
+                    PolishOpen.ToolTip = question.ShowHint();
                 }
             }
             else
@@ -65,11 +82,26 @@ namespace EasyEnglishWPF.Pages
                 test = user.GetTest();
                 ConcreteAggregate concreteAggregate = new ConcreteAggregate();
                 concreteAggregate.AddQuestions(test.questionChooseStrategy.GetQuestions());
-                iterator = concreteAggregate.CreateStandardIterator();
+                int x = random.Next(3);
+                switch (x)
+                {
+                    case 0:
+                        iterator = concreteAggregate.CreateEdgeIterator();
+                        break;
+                    case 1:
+                        iterator = concreteAggregate.CreateRandomIterator();
+                        break;
+                    case 2:
+                        iterator = concreteAggregate.CreateStandardIterator();
+                        break;
+
+                }
 
                 if (iterator.HasNext())
                 {
                     Question question = iterator.Next();
+                    question = new ExtendedHint(new ShortHint(question, Database.GetSimpleHint(question.ID)), Database.GetBetterHint(question.ID));
+                    Polish.ToolTip = question.ShowHint();
                     if (way == "pol->ang") Polish.Content = question.Polish;
                     else Polish.Content = question.English;
                 }
@@ -169,6 +201,8 @@ namespace EasyEnglishWPF.Pages
                     if (iterator.HasNext())
                     {
                         Question question = iterator.Next();
+                        question = new ExtendedHint(new ShortHint(question, Database.GetSimpleHint(question.ID)), Database.GetBetterHint(question.ID));
+                        Polish.ToolTip = question.ShowHint();
                         Polish.Content = question.Polish;
                         PopulateClosedAnswers();
                     }

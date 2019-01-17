@@ -22,7 +22,6 @@ namespace EasyEnglishWPF.Pages
     public partial class EditDatabase : UserControl
     {
         private bool data_loaded = false;
-        private int mode_selected = -1;
 
         public EditDatabase()
         {

@@ -19,14 +19,17 @@ namespace EasyEnglishWPF.Classes
         {
             this.aggregate = aggregate;
             left_index = -1;
-            right_index = aggregate.Count;
+            right_index = aggregate.Count - 1;
             center = right_index / 2;
             left_side = true;
         }
 
         public Question Current()
         {
-            throw new NotImplementedException();
+            if (left_side)
+                return aggregate.GetQuestion(left_index);
+            else
+                return aggregate.GetQuestion(right_index);
         }
 
         public bool HasNext()

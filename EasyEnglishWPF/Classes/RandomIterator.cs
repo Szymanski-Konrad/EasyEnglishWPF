@@ -12,6 +12,7 @@ namespace EasyEnglishWPF.Classes
         private ConcreteAggregate aggregate;
         private Random random;
         private List<Question> questions;
+        private Question current;
 
         public RandomIterator(ConcreteAggregate aggregate)
         {
@@ -22,7 +23,7 @@ namespace EasyEnglishWPF.Classes
 
         public Question Current()
         {
-            throw new NotImplementedException();
+            return current;
         }
 
         public bool HasNext()
@@ -34,6 +35,7 @@ namespace EasyEnglishWPF.Classes
         {
             int x = random.Next(questions.Count);
             Question question = questions[x];
+            current = question;
             questions.RemoveAt(x);
             return question;
         }
