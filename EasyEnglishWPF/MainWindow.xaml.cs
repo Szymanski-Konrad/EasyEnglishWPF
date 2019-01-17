@@ -13,6 +13,17 @@ namespace EasyEnglishWPF
         {
             InitializeComponent();
 
+            Database.SaveHistory("user", "nowy test");
+            Database.SaveHistory("user", "nowy test");
+            Database.SaveHistory("user", "nowy test");
+            Database.SaveHistory("user", "nowy test");
+            Database.SaveHistory("user", "nowy test");
+
+            var list = Database.LoadHistory("user");
+
+            foreach (var item in list)
+                MessageBox.Show(item);
+
             Switcher.pageSwitcher = this;
             Switcher.Switch(new Pages.MainMenu());
         }
