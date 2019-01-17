@@ -24,7 +24,7 @@ namespace EasyEnglishWPF.Pages
     {
         private string skill = "2 odpowiedzi";
         private string way = "pol->ang";
-        private string strategy = "";
+        private string strategy = "first";
 
         private string selected_closed = "";
 
@@ -175,6 +175,7 @@ namespace EasyEnglishWPF.Pages
                     else
                     {
                         MessageBox.Show(test.GetResult().ToString());
+                        Database.SaveHistory(user.GetID(), test.ToString());
                     }
                     break;
                 case "ang->pol":
@@ -190,6 +191,7 @@ namespace EasyEnglishWPF.Pages
                     else
                     {
                         MessageBox.Show(test.GetResult().ToString());
+                        Database.SaveHistory(user.GetID(), test.ToString());
                     }
                     break;
             }
@@ -217,6 +219,7 @@ namespace EasyEnglishWPF.Pages
                     else
                     {
                         MessageBox.Show(test.GetResult().ToString());
+                        Database.SaveHistory(user.GetID(), test.ToString());
                     }
                     break;
                 case "ang->pol":
@@ -231,6 +234,7 @@ namespace EasyEnglishWPF.Pages
                     else
                     {
                         MessageBox.Show(test.GetResult().ToString());
+                        Database.SaveHistory(user.GetID(), test.ToString());
                     }
                     break;
             }
