@@ -11,7 +11,7 @@ namespace EasyEnglishWPF.Classes
     {
         public List<Question> getQuestions()
         {
-            throw new NotImplementedException();
+            return Database.LoadLast();
         }
     }
 }

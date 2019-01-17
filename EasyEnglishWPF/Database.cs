@@ -212,5 +212,49 @@ namespace EasyEnglishWPF
             return id;
         }
         #endregion
+
+        #region GetDifferent Variants of Questions from database
+        public static List<Question> LoadLast()
+        {
+            var list = new List<Question>();
+            connection.Open();
+            var command = new SQLiteCommand("select * from Question order by ID DESC LIMIT 10", connection);
+            var reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                list.Add(new Question()
+                {
+                    ID = reader.GetInt32(0),
+                    Polish = (string)reader.GetValue(1),
+                    English = (string)reader.GetValue(2),
+                });
+            }
+
+            connection.Close();
+
+            return list;
+        }
+
+        public static List<Question> LoadFirst()
+        {
+            var list = new List<Question>();
+            connection.Open();
+            var command = new SQLiteCommand("select * from Question order by ID ASC LIMIT 10", connection);
+            var reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                list.Add(new Question()
+                {
+                    ID = reader.GetInt32(0),
+                    Polish = (string)reader.GetValue(1),
+                    English = (string)reader.GetValue(2),
+                });
+            }
+
+            connection.Close();
+
+            return list;
+        }
+        #endregion
     }
 }

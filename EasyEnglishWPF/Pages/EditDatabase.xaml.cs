@@ -83,7 +83,7 @@ namespace EasyEnglishWPF.Pages
             });
 
             PopulateListView();
-            PolishEdit.Text = EnglishEdit.Text = String.Empty;
+            PolishAdd.Text = EnglishAdd.Text = SimpleHintAdd.Text = BetterHintAdd.Text = String.Empty;
         }
 
         private void AddToDatabase_Click(object sender, RoutedEventArgs e)
