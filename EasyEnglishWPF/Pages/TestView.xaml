@@ -28,10 +28,11 @@
             <StackPanel Name="Options" Margin="10"/>
             <Button Content="Answer" Margin="10" Click="Answer_Click"/>
         </StackPanel>
-        <StackPanel Name="Close" HorizontalAlignment="Center" Visibility="Collapsed">
+        <StackPanel Name="Open" HorizontalAlignment="Center" Visibility="Collapsed">
             <Label Name="PolishOpen" Margin="10,20,10,10"/>
             <TextBox Name="Answer_Eng" Margin="10"/>
             <Button Content="Answer" Margin="10" Click="AnswerOpen_Click"/>
         </StackPanel>
+        <Button Content="Back" Margin="10" Click="Back_Click"/>
     </StackPanel>
 </UserControl>
