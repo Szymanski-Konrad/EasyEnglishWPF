@@ -255,6 +255,40 @@ namespace EasyEnglishWPF
 
             return list;
         }
+
+        public static List<string> LoadFakeAnswersENG(int question_id, int number)
+        {
+            var list = new List<string>();
+            connection.Open();
+            var command = new SQLiteCommand("select English from Question where ID != @id order by random() limit @limit", connection);
+            command.Parameters.AddWithValue("@id", question_id);
+            command.Parameters.AddWithValue("@limit", number);
+            var reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                list.Add(reader.GetString(0));
+            }
+            connection.Close();
+
+            return list;
+        }
+
+        public static List<string> LoadFakeAnswersPL(int question_id, int number)
+        {
+            var list = new List<string>();
+            connection.Open();
+            var command = new SQLiteCommand("select Polish from Question where ID != @id order by random() limit @limit", connection);
+            command.Parameters.AddWithValue("@id", question_id);
+            command.Parameters.AddWithValue("@limit", number);
+            var reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                list.Add(reader.GetString(0));
+            }
+            connection.Close();
+
+            return list;
+        }
         #endregion
     }
 }
