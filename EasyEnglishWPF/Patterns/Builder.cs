@@ -10,7 +10,7 @@ namespace EasyEnglishWPF.Patterns
     /// <summary>
     /// Test Builder.
     /// </summary>
-    abstract class Builder
+    public abstract class Builder
     {
         //UPGRADE: moze cos z nullem zrobic
 
