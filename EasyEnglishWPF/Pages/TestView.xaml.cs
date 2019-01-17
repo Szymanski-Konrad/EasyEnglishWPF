@@ -20,14 +20,9 @@ namespace EasyEnglishWPF.Pages
     /// </summary>
     public partial class TestView : UserControl
     {
-        public TestView(string mode)
+        public TestView()
         {
             InitializeComponent();
-
-            if (mode == "open")
-                Open.Visibility = Visibility.Visible;
-            else
-                Close.Visibility = Visibility.Visible;
         }
 
         private void OpenAnswer_Click(object sender, RoutedEventArgs e)

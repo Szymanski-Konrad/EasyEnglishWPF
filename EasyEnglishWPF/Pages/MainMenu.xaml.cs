@@ -47,5 +47,15 @@ namespace EasyEnglishWPF.Pages
         {
             Switcher.Switch(new Pages.EditDatabase());
         }
+
+        private void Test_Click(object sender, RoutedEventArgs e)
+        {
+            Switcher.Switch(new Pages.TestView());
+        }
+
+        private void Training_Click(object sender, RoutedEventArgs e)
+        {
+            Switcher.Switch(new Pages.TrainView());
+        }
     }
 }

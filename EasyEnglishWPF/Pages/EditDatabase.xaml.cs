@@ -63,89 +63,56 @@ namespace EasyEnglishWPF.Pages
 
         private void RemoveFromDatabase_Click(object sender, RoutedEventArgs e)
         {
-            if (mode_selected == 1)
-                Database.RemoveCloseQuestion((Data.SelectedItem as Question).ID);
-            else if (mode_selected == 0)
-                Database.RemoveOpenQuestion((Data.SelectedItem as Question).ID);
+            Database.RemoveQuestion((Data.SelectedItem as Question).ID);
             PopulateListView();
         }
 
         private void EditDatabase_Click(object sender, RoutedEventArgs e)
         {
-            if (ContentEdit.Text == String.Empty && AnswerEdit.Text == String.Empty)
+            if (PolishEdit.Text == String.Empty && EnglishEdit.Text == String.Empty)
             {
                 MessageBox.Show("Najpierw wypełnij pola");
                 return;
             }
 
-            if (mode_selected == 1)
+            Database.EditQuestion(new Question()
             {
-                Database.EditCloseQuestion(new CloseQuestion()
-                {
-                    ID = (Data.SelectedItem as Question).ID,
-                    Content = ContentEdit.Text,
-                    Correct = AnswerEdit.Text
-                });
-            }
-            else if (mode_selected == 0)
-            {
-                Database.EditOpenQuestion(new OpenQuestion()
-                {
-                    ID = (Data.SelectedItem as Question).ID,
-                    Content = ContentEdit.Text,
-                    Correct = AnswerEdit.Text
-                });
-            }
+                ID = (Data.SelectedItem as Question).ID,
+                Polish = PolishEdit.Text,
+                English = EnglishEdit.Text
+            });
 
             PopulateListView();
-            ContentEdit.Text = AnswerEdit.Text = String.Empty;
+            PolishEdit.Text = EnglishEdit.Text = String.Empty;
         }
 
         private void AddToDatabase_Click(object sender, RoutedEventArgs e)
         {
-            if (ContentAdd.Text == String.Empty || AnswerAdd.Text == String.Empty)
+            if (PolishAdd.Text == String.Empty || EnglishAdd.Text == String.Empty)
             {
                 MessageBox.Show("Najpierw wypełnij pola");
                 return;
             }
 
-            if (ModeCombo.SelectedIndex == 0) //otwarte
-            {
-                Database.SaveOpenQuestion(
-                    new OpenQuestion()
-                    {
-                        Content = ContentAdd.Text,
-                        Correct = AnswerAdd.Text,
-                    });
-                ContentAdd.Text = AnswerAdd.Text = String.Empty;
-            }
-            else if (ModeCombo.SelectedIndex == 1) //zamkniete
-            {
-                Database.SaveCloseQuestion(
-                   new CloseQuestion()
-                   {
-                       Content = ContentAdd.Text,
-                       Correct = AnswerAdd.Text,
-                   });
-                ContentAdd.Text = AnswerAdd.Text = String.Empty;
-            }
+            Database.SaveQuestion(
+               new Question()
+               {
+                   Polish = PolishAdd.Text,
+                   English = EnglishAdd.Text,
+               });
+
+            int id = Database.GetLastID();
+            Database.SaveSimpleHint(id, SimpleHintAdd.Text);
+            Database.SaveBetterHint(id, BetterHintAdd.Text);
+            PolishAdd.Text = EnglishAdd.Text = SimpleHintAdd.Text = BetterHintAdd.Text = String.Empty;
 
             PopulateListView();
         }
 
         private void PopulateListView()
         {
-            if (ModeCombo.SelectedIndex == 0)
-            {
-                var list = Database.LoadOpenQuestions();
-                Data.ItemsSource = list;
-
-            }
-            else if (ModeCombo.SelectedIndex == 1)
-            {
-                var list = Database.LoadCloseQuestions();
-                Data.ItemsSource = list;
-            }
+            var list = Database.LoadQuestions();
+            Data.ItemsSource = list;
         }
 
         private void ModeCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -156,12 +123,13 @@ namespace EasyEnglishWPF.Pages
 
         private void Data_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            mode_selected = ModeCombo.SelectedIndex;
             Question question = (Question)Data.SelectedItem;
             if (question != null)
             {
-                ContentEdit.Text = question.Content;
-                AnswerEdit.Text = question.Correct;
+                PolishEdit.Text = question.Polish;
+                EnglishEdit.Text = question.English;
+                SimpleHintEdit.Text = Database.GetSimpleHint(question.ID);
+                BetterHintEdit.Text = Database.GetBetterHint(question.ID);
             }
         }
 

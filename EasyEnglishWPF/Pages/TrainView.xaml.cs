@@ -20,13 +20,9 @@ namespace EasyEnglishWPF.Pages
     /// </summary>
     public partial class TrainView : UserControl
     {
-        public TrainView(string mode)
+        public TrainView()
         {
             InitializeComponent();
-            if (mode == "open")
-                Open.Visibility = Visibility.Visible;
-            else
-                Close.Visibility = Visibility.Visible;
         }
 
         private void OpenAnswer_Click(object sender, RoutedEventArgs e)

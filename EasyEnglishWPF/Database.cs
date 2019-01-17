@@ -57,51 +57,51 @@ namespace EasyEnglishWPF
         }
         #endregion
 
-        #region OpenQuestions
-        public static void SaveOpenQuestion(OpenQuestion question)
+        #region Questions
+        public static void SaveQuestion(Question question)
         {
             connection.Open();
-            var command = new SQLiteCommand("insert into OpenQuestion (Content,Answer) values (@content,@answer)", connection);
-            command.Parameters.AddWithValue("@content", question.Content);
-            command.Parameters.AddWithValue("@answer", question.Correct);
+            var command = new SQLiteCommand("insert into Question (Polish,English) values (@pol,@eng)", connection);
+            command.Parameters.AddWithValue("@pol", question.Polish);
+            command.Parameters.AddWithValue("@eng", question.English);
             command.ExecuteNonQuery();
             connection.Close();
         }
 
-        public static OpenQuestion LoadOpenQuestion(int id)
+        public static Question LoadQuestion(int id)
         {
-            OpenQuestion question = new OpenQuestion();
+            Question question = new Question();
             connection.Open();
-            var command = new SQLiteCommand("select * from OpenQuestion where ID = @id", connection);
+            var command = new SQLiteCommand("select * from Question where ID = @id", connection);
             command.Parameters.AddWithValue("@id", id);
             var reader = command.ExecuteReader();
             while (reader.Read())
             {
                 question.ID = reader.GetInt32(0);
-                question.Content = (string)reader.GetValue(1);
-                question.Correct = (string)reader.GetValue(2);
+                question.Polish = (string)reader.GetValue(1);
+                question.English = (string)reader.GetValue(2);
             }
 
             connection.Close();
             return question;
         }
 
-        public static void EditOpenQuestion(OpenQuestion question)
+        public static void EditQuestion(Question question)
         {
             connection.Open();
-            var command = new SQLiteCommand("update OpenQuestion set Content = @content, Answer = @answer where ID = @id", connection);
+            var command = new SQLiteCommand("update Question set Polish = @pol, English = @eng where ID = @id", connection);
             command.Parameters.AddWithValue("@id", question.ID);
-            command.Parameters.AddWithValue("@content", question.Content);
-            command.Parameters.AddWithValue("@answer", question.Correct);
+            command.Parameters.AddWithValue("@pol", question.Polish);
+            command.Parameters.AddWithValue("@eng", question.English);
             command.ExecuteNonQuery();
             connection.Close();
         }
 
-        public static int OpenQuestionsCount()
+        public static int QuestionsCount()
         {
             int items = 0;
             connection.Open();
-            var command = new SQLiteCommand("select count(*) from OpenQuestion", connection);
+            var command = new SQLiteCommand("select count(*) from Question", connection);
             var reader = command.ExecuteReader();
             while (reader.Read())
             {
@@ -112,19 +112,19 @@ namespace EasyEnglishWPF
             return items;
         }
 
-        public static List<OpenQuestion> LoadOpenQuestions()
+        public static List<Question> LoadQuestions()
         {
-            var list = new List<OpenQuestion>();
+            var list = new List<Question>();
             connection.Open();
-            var command = new SQLiteCommand("select * from OpenQuestion", connection);
+            var command = new SQLiteCommand("select * from Question", connection);
             var reader = command.ExecuteReader();
             while (reader.Read())
             {
-                list.Add(new OpenQuestion()
+                list.Add(new Question()
                 {
                     ID = reader.GetInt32(0),
-                    Content = (string)reader.GetValue(1),
-                    Correct = (string)reader.GetValue(2),
+                    Polish = (string)reader.GetValue(1),
+                    English = (string)reader.GetValue(2),
                 });
             }
 
@@ -133,101 +133,83 @@ namespace EasyEnglishWPF
             return list;
         }
 
-        public static void RemoveOpenQuestion(int id)
+        public static void RemoveQuestion(int id)
         {
             connection.Open();
-            var command = new SQLiteCommand("delete from OpenQuestion where ID = @id", connection);
+            var command = new SQLiteCommand("delete from Question where ID = @id", connection);
             command.Parameters.AddWithValue("@id", id);
             command.ExecuteNonQuery();
             connection.Close();
-
         }
-        #endregion
 
-        #region CloseQuestions
-        public static void SaveCloseQuestion(CloseQuestion question)
+        public static void SaveSimpleHint(int id, string hint)
         {
             connection.Open();
-            var command = new SQLiteCommand("insert into CloseQuestion (Content,Answer) values (@content,@answer)", connection);
-            command.Parameters.AddWithValue("@content", question.Content);
-            command.Parameters.AddWithValue("@answer", question.Correct);
+            var command = new SQLiteCommand("update Question set SimpleHint = @hint where ID = @id", connection);
+            command.Parameters.AddWithValue("@id", id);
+            command.Parameters.AddWithValue("@hint", hint);
             command.ExecuteNonQuery();
             connection.Close();
         }
 
-        public static CloseQuestion LoadCloseQuestion(int id)
+        public static void SaveBetterHint(int id, string hint)
         {
-            CloseQuestion question = new CloseQuestion();
             connection.Open();
-            var command = new SQLiteCommand("select * from CloseQuestion where ID = @id", connection);
+            var command = new SQLiteCommand("update Question set BetterHint = @hint where ID = @id", connection);
+            command.Parameters.AddWithValue("@id", id);
+            command.Parameters.AddWithValue("@hint", hint);
+            command.ExecuteNonQuery();
+            connection.Close();
+        }
+
+        public static string GetSimpleHint(int id)
+        {
+            string hint = "";
+            connection.Open();
+            var command = new SQLiteCommand("select SimpleHint from Question where ID = @id", connection);
             command.Parameters.AddWithValue("@id", id);
             var reader = command.ExecuteReader();
-            while (reader.Read())
+            while(reader.Read())
             {
-                question.ID = reader.GetInt32(0);
-                question.Content = (string)reader.GetValue(1);
-                question.Correct = (string)reader.GetValue(2);
-            }
-
-            connection.Close();
-            return question;
-        }
-
-        public static void EditCloseQuestion(CloseQuestion question)
-        {
-            connection.Open();
-            var command = new SQLiteCommand("update CloseQuestion set Content = @content, Answer = @answer where ID = @id", connection);
-            command.Parameters.AddWithValue("@id", question.ID);
-            command.Parameters.AddWithValue("@content", question.Content);
-            command.Parameters.AddWithValue("@answer", question.Correct);
-            command.ExecuteNonQuery();
-            connection.Close();
-        }
-
-        public static int CloseQuestionsCount()
-        {
-            int items = 0;
-            connection.Open();
-            var command = new SQLiteCommand("select count(*) from CloseQuestion", connection);
-            var reader = command.ExecuteReader();
-            while (reader.Read())
-            {
-                items = reader.GetInt32(0);
-            }
-
-            connection.Close();
-            return items;
-        }
-
-        public static List<CloseQuestion> LoadCloseQuestions()
-        {
-            var list = new List<CloseQuestion>();
-            connection.Open();
-            var command = new SQLiteCommand("select * from CloseQuestion", connection);
-            var reader = command.ExecuteReader();
-            while (reader.Read())
-            {
-                var item = new CloseQuestion();
-                item.ID = reader.GetInt32(0);
-                item.Content = (string)reader.GetValue(1);
-                item.Correct = (string)reader.GetValue(2);
-
-                list.Add(item);
+                hint = reader.GetString(0);
             }
 
             connection.Close();
 
-            return list;
+            return hint;
         }
 
-        public static void RemoveCloseQuestion(int id)
+        public static string GetBetterHint(int id)
         {
+            string hint = "";
             connection.Open();
-            var command = new SQLiteCommand("delete from CloseQuestion where ID = @id", connection);
+            var command = new SQLiteCommand("select BetterHint from Question where ID = @id", connection);
             command.Parameters.AddWithValue("@id", id);
-            command.ExecuteNonQuery();
+            var reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                hint = reader.GetString(0);
+            }
+
             connection.Close();
 
+            return hint;
+        }
+
+        public static int GetLastID()
+        {
+            int id = -1;
+            connection.Open();
+            var command = new SQLiteCommand("select ID from Question order by ID DESC LIMIT 1", connection);
+            var reader = command.ExecuteReader();
+            while(reader.Read())
+            {
+                id = reader.GetInt32(0);
+            }
+
+            connection.Close();
+
+            return id;
         }
         #endregion
     }

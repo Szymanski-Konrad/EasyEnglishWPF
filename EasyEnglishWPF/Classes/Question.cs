@@ -9,8 +9,8 @@ namespace EasyEnglishWPF.Classes
     public class Question
     {
         public int ID { get; set; }
-        public string Content { get; set; }
-        public string Correct { get; set; }
+        public string Polish { get; set; }
+        public string English { get; set; }
     
         virtual public string ShowHint()
         {
@@ -24,7 +24,7 @@ namespace EasyEnglishWPF.Classes
 
         public override string ToString()
         {
-            return ID + " - " + Content + " - " + Correct;
+            return ID + " - " + Polish + " - " + English;
         }
     }
 }
