@@ -9,10 +9,10 @@ namespace EasyEnglishWPF.Classes
 {
     public class WriteAnswerTest : Test, IAbstractFactory
     {
-        public WriteAnswerTest(string strategy)
+        public WriteAnswerTest(string type, string strategy)
         {
             testName = "Test własnej odpowiedzi";
-
+            this.type = type;
             switch (strategy)
             {
                 case "first":
