@@ -13,13 +13,15 @@ namespace EasyEnglishWPF.Classes
         public List<Question> Questions { get; set; }
         public IChoose questionChooseStrategy { get; set; }
         public IAggregate aggregate { get; set; }
+        public int points = 0;
         
         protected string testName = "test";
 
         public int level { get; set; } 
         public string type { get; set; }
 
+        public abstract void IncreasePoints();
 
-        public abstract string GetResult();
+        public abstract int GetResult();
     }
 }

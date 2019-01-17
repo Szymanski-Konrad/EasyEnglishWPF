@@ -14,9 +14,19 @@ namespace EasyEnglishWPF.Classes
 
         }
 
-        public string ReadTestData(string testType, string testLvl)
+        public List<Question> ReadTestData(string buildTestType)
         {
-            return testType + " : " + testLvl;
+            switch (buildTestType)
+            {
+                case "first":
+                    return Database.LoadFirst();
+                case "last":
+                    return Database.LoadLast();
+                case "random":
+                    return Database.LoadQuestions();
+                default:
+                    return null;
+            }
         }
     }
 }

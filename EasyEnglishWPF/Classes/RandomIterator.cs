@@ -20,12 +20,17 @@ namespace EasyEnglishWPF.Classes
             random = new Random();
         }
 
+        public Question Current()
+        {
+            throw new NotImplementedException();
+        }
+
         public bool HasNext()
         {
             return questions.Count > 0;
         }
 
-        public object Next()
+        public Question Next()
         {
             int x = random.Next(questions.Count);
             Question question = questions[x];

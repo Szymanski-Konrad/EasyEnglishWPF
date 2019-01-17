@@ -24,12 +24,17 @@ namespace EasyEnglishWPF.Classes
             left_side = true;
         }
 
+        public Question Current()
+        {
+            throw new NotImplementedException();
+        }
+
         public bool HasNext()
         {
             return left_index < center && right_index >= center ? true : false;
         }
 
-        public object Next()
+        public Question Next()
         {
             if (left_side)
             {

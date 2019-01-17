@@ -26,7 +26,8 @@ namespace EasyEnglishWPF.Pages
         {
             InitializeComponent();
             user = new User("user");
-            user.SetBuilder(new TestBuilder());            
+            user.SetBuilder(new TestBuilder());
+            user.CreateTest("close", "first");
         }
 
         public void UtilizeState(object state)
@@ -51,7 +52,7 @@ namespace EasyEnglishWPF.Pages
 
         private void Test_Click(object sender, RoutedEventArgs e)
         {
-            Switcher.Switch(new Pages.TestView());
+            Switcher.Switch(new Pages.TestView(ref user));
         }
 
         private void Training_Click(object sender, RoutedEventArgs e)

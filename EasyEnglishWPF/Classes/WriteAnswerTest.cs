@@ -7,16 +7,21 @@ using System.Threading.Tasks;
 
 namespace EasyEnglishWPF.Classes
 {
-    class WriteAnswerTest : Test, IAbstractFactory
+    public class WriteAnswerTest : Test, IAbstractFactory
     {
         public WriteAnswerTest()
         {
             testName = "Test własnej odpowiedzi";
         }
 
-        public override string GetResult()
+        public override int GetResult()
         {
-            return "write";
+            return points;
+        }
+
+        public override void IncreasePoints()
+        {
+            points++;
         }
 
         public void SetLevel(int level)

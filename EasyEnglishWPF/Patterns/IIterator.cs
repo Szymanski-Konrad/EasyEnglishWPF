@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EasyEnglishWPF.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,7 @@ namespace EasyEnglishWPF.Patterns
     public interface IIterator
     {
         bool HasNext();
-        object Next();
+        Question Next();
+        Question Current();
     }
 }
