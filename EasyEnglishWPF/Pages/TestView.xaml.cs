@@ -20,17 +20,33 @@ namespace EasyEnglishWPF.Pages
     /// </summary>
     public partial class TestView : UserControl
     {
+        private string skill = "";
+        private string way = "";
+
         public TestView()
         {
             InitializeComponent();
         }
 
-        private void OpenAnswer_Click(object sender, RoutedEventArgs e)
+        private void Run_Test(object sender, RoutedEventArgs e)
         {
-
+            OptionGrid.Visibility = Visibility.Collapsed;
+            Test.Visibility = Visibility.Visible;
         }
 
-        private void CloseAnswer_Click(object sender, RoutedEventArgs e)
+        private void Skill_Checked(object sender, RoutedEventArgs e)
+        {
+            skill = (sender as RadioButton).Content.ToString();
+            MessageBox.Show(skill);
+        }
+
+        private void Way_Checked(object sender, RoutedEventArgs e)
+        {
+            way = (sender as RadioButton).Content.ToString();
+            MessageBox.Show(way);
+        }
+
+        private void Answer_Click(object sender, RoutedEventArgs e)
         {
 
         }
