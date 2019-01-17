@@ -9,14 +9,19 @@ namespace EasyEnglishWPF.Classes
 {
     public class AnswerTestReader : ITestDBReader
     {
-        public AnswerTestReader()
+        public List<Question> ReadTestData(string buildTestType)
         {
-
-        }
-
-        public string ReadTestData(string testType, string testLvl)
-        {
-            return testType + " : " + testLvl;
+            switch (buildTestType)
+            {
+                case "first":
+                    return Database.LoadFirst();
+                case "last":
+                    return Database.LoadLast();
+                case "random":
+                    return Database.LoadQuestions();
+                default:
+                    return null;
+            }
         }
     }
 }

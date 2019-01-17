@@ -18,12 +18,17 @@ namespace EasyEnglishWPF.Classes
             index = -1;
         }
 
-        public bool HasNext()
+        public Question Current()
         {
-            return index < aggregate.Count;
+            return aggregate.GetQuestion(index);
         }
 
-        public object Next()
+        public bool HasNext()
+        {
+            return index < aggregate.Count - 1;
+        }
+
+        public Question Next()
         {
             index++;
             return aggregate.GetQuestion(index);

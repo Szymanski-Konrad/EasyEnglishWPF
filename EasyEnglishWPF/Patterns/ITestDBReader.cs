@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EasyEnglishWPF.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,6 @@ namespace EasyEnglishWPF.Patterns
     /// </summary>
     public interface ITestDBReader
     {
-        string ReadTestData(string testType, string testLvl);
+        List<Question> ReadTestData(string buildTestType);
     }
 }

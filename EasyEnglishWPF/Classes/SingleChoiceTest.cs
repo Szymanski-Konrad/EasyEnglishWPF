@@ -34,9 +34,14 @@ namespace EasyEnglishWPF.Classes
             Questions = questionChooseStrategy.getQuestions();
         }
 
-        public override string GetResult()
+        public override void IncreasePoints()
         {
-            return "choose";
+            points++;
+        }
+
+        public override int GetResult()
+        {
+            return points;
         }
 
         public void SetLevel(int level)
