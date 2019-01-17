@@ -54,6 +54,11 @@ namespace EasyEnglishWPF.Pages
             Remove.Visibility = Visibility.Visible;
             Edit.Visibility = Visibility.Collapsed;
         }
+
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            Switcher.Switch(new Pages.MainMenu());
+        }
         #endregion
 
         private void RemoveFromDatabase_Click(object sender, RoutedEventArgs e)

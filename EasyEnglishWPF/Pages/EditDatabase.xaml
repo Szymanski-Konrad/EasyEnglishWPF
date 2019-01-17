@@ -8,6 +8,7 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <DockPanel HorizontalAlignment="Left" VerticalAlignment="Top" Width="790" Height="440" Margin="5">
         <WrapPanel HorizontalAlignment="Center" DockPanel.Dock="Top" Height="100">
+            <Button Content="Powrót" Width="100" Height="50" Margin="5,5,40,5" Click="Back_Click"/>
             <Button Content="Dodaj" Width="100" Height="50" Margin="5" Click="Add_Click"/>
             <Button Content="Usun" Width="100" Height="50" Margin="5"  Click="Remove_Click"/>
             <Button Content="Edytuj" Width="100" Height="50" Margin="5" Click="Edit_Click"/>
