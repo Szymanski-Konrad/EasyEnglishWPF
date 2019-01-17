@@ -1,4 +1,6 @@
-﻿using System;
+﻿using EasyEnglishWPF.Classes;
+using EasyEnglishWPF.Patterns;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 

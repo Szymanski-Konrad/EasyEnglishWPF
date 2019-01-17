@@ -73,6 +73,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Classes\TestBuilder.cs" />
     <Compile Include="Database.cs" />
     <Compile Include="ISwitchable.cs" />
     <Compile Include="Pages\EditDatabase.xaml.cs">
@@ -84,8 +85,8 @@
     <Compile Include="Pages\MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\OpeenTestWindow.xaml.cs">
-      <DependentUpon>OpeenTestWindow.xaml</DependentUpon>
+    <Compile Include="Pages\OpenTestWindow.xaml.cs">
+      <DependentUpon>OpenTestWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\TestView.xaml.cs">
       <DependentUpon>TestView.xaml</DependentUpon>
@@ -139,7 +140,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\OpeenTestWindow.xaml">
+    <Page Include="Pages\OpenTestWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EasyEnglishWPF.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,8 @@ namespace EasyEnglishWPF.Pages
         public MainMenu()
         {
             InitializeComponent();
+            User user = new User("user");
+            user.SetBuilder(new TestBuilder());
         }
 
         public void UtilizeState(object state)
