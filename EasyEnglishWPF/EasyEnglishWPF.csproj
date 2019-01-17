@@ -75,6 +75,9 @@
     </ApplicationDefinition>
     <Compile Include="Database.cs" />
     <Compile Include="ISwitchable.cs" />
+    <Compile Include="Pages\EditDatabase.xaml.cs">
+      <DependentUpon>EditDatabase.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\HistoryWindow.xaml.cs">
       <DependentUpon>HistoryWindow.xaml</DependentUpon>
     </Compile>
@@ -121,6 +124,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\EditDatabase.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\HistoryWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

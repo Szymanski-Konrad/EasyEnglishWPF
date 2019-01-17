@@ -16,27 +16,13 @@ using System.Windows.Shapes;
 namespace EasyEnglishWPF.Pages
 {
     /// <summary>
-    /// Interaction logic for TrainView.xaml
+    /// Interaction logic for EditDatabase.xaml
     /// </summary>
-    public partial class TrainView : UserControl
+    public partial class EditDatabase : UserControl
     {
-        public TrainView(string mode)
+        public EditDatabase()
         {
             InitializeComponent();
-            if (mode == "open")
-                Open.Visibility = Visibility.Visible;
-            else
-                Close.Visibility = Visibility.Visible;
-        }
-
-        private void OpenAnswer_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void CloseAnswer_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }
