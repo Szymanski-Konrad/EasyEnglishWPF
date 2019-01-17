@@ -16,6 +16,14 @@ namespace EasyEnglishWPF.Classes
             questions.Add(q);
         }
 
+        public void AddQuestions(List<Question> list)
+        {
+            foreach (Question question in list)
+            {
+                questions.Add(question);
+            }
+        }
+
         public int Count
         {
             get { return questions.Count; }
@@ -26,14 +34,19 @@ namespace EasyEnglishWPF.Classes
             return questions[index];
         }
 
+        public List<Question> GetQuestions()
+        {
+            return questions;
+        }
+
         public IIterator CreateEdgeIterator()
         {
-            throw new NotImplementedException();
+            return new EdgeIterator(this);
         }
 
         public IIterator CreateRandomIterator()
         {
-            throw new NotImplementedException();
+            return new RandomIterator(this);
         }
 
         public IIterator CreateStandardIterator()
