@@ -17,9 +17,9 @@ namespace EasyEnglishWPF.Classes
             return "Podpowiedź: ";
         }
 
-        virtual public bool CheckCorrect()
+        public bool CheckAnswer(string answer)
         {
-            return false;
+            return string.Equals(English, answer, StringComparison.OrdinalIgnoreCase);
         }
 
         public override string ToString()

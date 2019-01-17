@@ -104,7 +104,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Classes\AnswerTestReader.cs" />
-    <Compile Include="Classes\CloseQuestion.cs" />
     <Compile Include="Classes\ConcreteAggregate.cs" />
     <Compile Include="Classes\EdgeIterator.cs" />
     <Compile Include="Classes\ExtendedHint.cs" />
@@ -112,7 +111,6 @@
     <Compile Include="Classes\LastChoose.cs" />
     <Compile Include="Classes\LearnMode.cs" />
     <Compile Include="Classes\Lecturer.cs" />
-    <Compile Include="Classes\OpenQuestion.cs" />
     <Compile Include="Classes\Question.cs" />
     <Compile Include="Classes\RandomChoose.cs" />
     <Compile Include="Classes\RandomIterator.cs" />

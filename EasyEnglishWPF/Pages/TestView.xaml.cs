@@ -47,12 +47,12 @@ namespace EasyEnglishWPF.Pages
 
             test = user.GetTest();
             ConcreteAggregate concreteAggregate = new ConcreteAggregate();
-            concreteAggregate.AddQuestions(test.questionChooseStrategy.getQuestions());
+            concreteAggregate.AddQuestions(test.questionChooseStrategy.GetQuestions());
             iterator = concreteAggregate.CreateStandardIterator();
 
             if (iterator.HasNext())
             {
-                Question question = (Question)iterator.Next();
+                Question question = iterator.Next();
                 PolishOpen.Content = question.Polish;
             }
         }
@@ -82,12 +82,12 @@ namespace EasyEnglishWPF.Pages
 
         private void AnswerOpen_Click(object sender, RoutedEventArgs e)
         {
-            if (iterator.Current().CheckCorrect())
+            if (iterator.Current().CheckAnswer(Answer_Eng.Text))
                 test.IncreasePoints();
 
             if (iterator.HasNext())
             {
-                Question question = (Question)iterator.Next();
+                Question question = iterator.Next();
                 PolishOpen.Content = question.Polish;
             }
             else

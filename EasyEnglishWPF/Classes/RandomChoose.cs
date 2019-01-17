@@ -9,7 +9,7 @@ namespace EasyEnglishWPF.Classes
 {
     public class RandomChoose : IChoose
     {
-        public List<Question> getQuestions()
+        public List<Question> GetQuestions()
         {
             int x = 0;
             Random random = new Random();

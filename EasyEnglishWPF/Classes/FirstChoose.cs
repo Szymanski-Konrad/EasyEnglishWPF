@@ -9,7 +9,7 @@ namespace EasyEnglishWPF.Classes
 {
     class FirstChoose : IChoose
     {
-        public List<Question> getQuestions()
+        public List<Question> GetQuestions()
         {
             return Database.LoadFirst();
         }
