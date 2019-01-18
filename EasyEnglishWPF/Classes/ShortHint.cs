@@ -15,6 +15,9 @@ namespace EasyEnglishWPF.Classes
         public ShortHint(Question q, string h)
         {
             question = q;
+            this.English = q.English;
+            this.ID = q.ID;
+            this.Polish = q.Polish;
             hint = h;
         }
 
