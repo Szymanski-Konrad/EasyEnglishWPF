@@ -11,7 +11,7 @@ namespace EasyEnglishWPF.Classes
     {
         public List<Question> GetQuestions()
         {
-            return Database.LoadFirst();
+            return new SingleTestReader().ReadTestData("first");
         }
     }
 }

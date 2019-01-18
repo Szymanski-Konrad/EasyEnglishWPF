@@ -23,7 +23,7 @@ namespace EasyEnglishWPF.Classes
                 case "last":
                     return Database.LoadLast();
                 case "random":
-                    return Database.LoadQuestions();
+                    return Database.LoadRandom();
                 default:
                     return null;
             }

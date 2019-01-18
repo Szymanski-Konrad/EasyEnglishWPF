@@ -256,6 +256,26 @@ namespace EasyEnglishWPF
             return list;
         }
 
+        public static List<Question> LoadRandom()
+        {
+            var list = new List<Question>();
+            connection.Open();
+            var command = new SQLiteCommand("select * from Question order by random() limit 10", connection);
+            var reader = command.ExecuteReader();
+            while(reader.Read())
+            {
+                list.Add(new Question()
+                {
+                    ID = reader.GetInt32(0),
+                    Polish = reader.GetString(1),
+                    English = reader.GetString(2),
+                });
+            }
+
+            connection.Close();
+            return list;
+        }
+
         public static List<string> LoadFakeAnswersENG(int question_id, int number)
         {
             var list = new List<string>();
@@ -289,6 +309,7 @@ namespace EasyEnglishWPF
 
             return list;
         }
+
         #endregion
     }
 }
