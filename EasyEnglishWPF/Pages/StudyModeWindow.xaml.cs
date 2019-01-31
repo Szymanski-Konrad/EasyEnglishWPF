@@ -35,8 +35,8 @@ namespace EasyEnglishWPF.Pages
             test = user.GetTest();
 
             ConcreteAggregate concreteAggregate = new ConcreteAggregate();
-            concreteAggregate.AddQuestions(test.questionChooseStrategy.GetQuestions());
-            iterator = concreteAggregate.CreateStandardIterator();
+            concreteAggregate.AddQuestions(test.questionChooseStrategy.GetQuestions("write"));
+            iterator = concreteAggregate.CreateIterator(3);
 
             if (iterator.HasNext())
             {
@@ -97,6 +97,7 @@ namespace EasyEnglishWPF.Pages
         {
             if (canNext)
             {
+                answerBox.Text = String.Empty;
                 if (iterator.HasNext())
                 {
                     Question question = (Question)iterator.Next();
@@ -113,7 +114,9 @@ namespace EasyEnglishWPF.Pages
                 }
                 else
                 {
-                    MessageBox.Show("This is the end of your training.");
+                    ConcreteAggregate concreteAggregate = new ConcreteAggregate();
+                    concreteAggregate.AddQuestions(test.questionChooseStrategy.GetQuestions("write"));
+                    iterator = concreteAggregate.CreateIterator(3);
                 }
                 canNext = false;
             }

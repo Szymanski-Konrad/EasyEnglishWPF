@@ -50,21 +50,8 @@ namespace EasyEnglishWPF.Pages
                 Open.Visibility = Visibility.Visible;
                 test = user.GetTest();
                 ConcreteAggregate concreteAggregate = new ConcreteAggregate();
-                concreteAggregate.AddQuestions(test.questionChooseStrategy.GetQuestions());
-                int x = random.Next(3);
-                switch(x)
-                {
-                    case 0:
-                        iterator = concreteAggregate.CreateEdgeIterator();
-                        break;
-                    case 1:
-                        iterator = concreteAggregate.CreateRandomIterator();
-                        break;
-                    case 2:
-                        iterator = concreteAggregate.CreateStandardIterator();
-                        break;
-                        
-                }
+                concreteAggregate.AddQuestions(test.questionChooseStrategy.GetQuestions("write"));
+                iterator = concreteAggregate.CreateIterator(random.Next(3));
 
                 if (iterator.HasNext())
                 {
@@ -81,21 +68,8 @@ namespace EasyEnglishWPF.Pages
                 Test.Visibility = Visibility.Visible;
                 test = user.GetTest();
                 ConcreteAggregate concreteAggregate = new ConcreteAggregate();
-                concreteAggregate.AddQuestions(test.questionChooseStrategy.GetQuestions());
-                int x = random.Next(3);
-                switch (x)
-                {
-                    case 0:
-                        iterator = concreteAggregate.CreateEdgeIterator();
-                        break;
-                    case 1:
-                        iterator = concreteAggregate.CreateRandomIterator();
-                        break;
-                    case 2:
-                        iterator = concreteAggregate.CreateStandardIterator();
-                        break;
-
-                }
+                concreteAggregate.AddQuestions(test.questionChooseStrategy.GetQuestions("single"));
+                iterator = concreteAggregate.CreateIterator(random.Next(3));
 
                 if (iterator.HasNext())
                 {
@@ -208,7 +182,7 @@ namespace EasyEnglishWPF.Pages
                     }
                     else
                     {
-                        MessageBox.Show(test.GetResult().ToString());
+                        MessageBox.Show(test.GetResult().ToString() + " / 10", "Wynik testu");
                         Database.SaveHistory(user.GetID(), test.ToString());
                     }
                     break;

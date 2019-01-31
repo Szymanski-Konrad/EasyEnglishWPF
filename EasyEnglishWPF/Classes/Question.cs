@@ -29,7 +29,7 @@ namespace EasyEnglishWPF.Classes
 
         public override string ToString()
         {
-            return ID + " - " + Polish + " - " + English;
+            return Polish + " - " + English;
         }
     }
 }

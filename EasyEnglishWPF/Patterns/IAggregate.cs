@@ -11,10 +11,6 @@ namespace EasyEnglishWPF.Patterns
     /// </summary>
     public interface IAggregate
     {
-        IIterator CreateStandardIterator();
-
-        IIterator CreateRandomIterator();
-
-        IIterator CreateEdgeIterator();
+        IIterator CreateIterator(int type);
     }
 }

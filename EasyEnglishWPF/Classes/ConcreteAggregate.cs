@@ -39,21 +39,15 @@ namespace EasyEnglishWPF.Classes
             return questions;
         }
 
-        public IIterator CreateEdgeIterator()
+        public IIterator CreateIterator(int type)
         {
-            return new EdgeIterator(this);
+            switch (type)
+            {
+                case 1: return new EdgeIterator(this);
+                case 2: return new RandomIterator(this);
+                case 3: return new StandardIterator(this);
+                default: return new StandardIterator(this);
+            }
         }
-
-        public IIterator CreateRandomIterator()
-        {
-            return new RandomIterator(this);
-        }
-
-        public IIterator CreateStandardIterator()
-        {
-            return new StandardIterator(this);
-        }
-
-        
     }
 }
