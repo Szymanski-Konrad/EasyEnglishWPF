@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace EasyEnglishWPF.Classes
 {
-    public class ShortHint : Hint
+    public class HintPolish : Hint
     {
         private string hint;
 
-        public ShortHint(Question q, string h) : base(q)
+        public HintPolish(Question q, string h) : base(q)
         {
             hint = h;
         }

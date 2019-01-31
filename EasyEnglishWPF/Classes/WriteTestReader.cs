@@ -14,9 +14,9 @@ namespace EasyEnglishWPF.Classes
 
         }
 
-        public List<Question> ReadTestData(string buildTestType)
+        public List<Question> ReadTestData(string buildTestType, int lvl)
         {
-            return Database.LoadTenQuestions(buildTestType, "open");
+            return Database.LoadTenQuestions(buildTestType, "open", lvl);
         }
     }
 }

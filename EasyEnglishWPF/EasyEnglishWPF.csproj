@@ -74,6 +74,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Classes\CloseQuestion.cs" />
+    <Compile Include="Classes\HintEnglish.cs" />
     <Compile Include="Classes\OpenQuestion.cs" />
     <Compile Include="Classes\TestBuilder.cs" />
     <Compile Include="Classes\WriteTestReader.cs" />
@@ -112,7 +113,7 @@
     <Compile Include="Classes\Question.cs" />
     <Compile Include="Classes\RandomChoose.cs" />
     <Compile Include="Classes\RandomIterator.cs" />
-    <Compile Include="Classes\ShortHint.cs" />
+    <Compile Include="Classes\HintPolish.cs" />
     <Compile Include="Classes\SingleChoiceTest.cs" />
     <Compile Include="Classes\SingleTestReader.cs" />
     <Compile Include="Classes\StandardIterator.cs" />

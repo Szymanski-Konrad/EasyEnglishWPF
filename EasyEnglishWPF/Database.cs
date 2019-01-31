@@ -58,12 +58,13 @@ namespace EasyEnglishWPF
         #endregion
 
         #region Questions
-        public static void SaveQuestion(Question question)
+        public static void SaveQuestion(Question question, int lvl)
         {
             connection.Open();
-            var command = new SQLiteCommand("insert into Question (Polish,English) values (@pol,@eng)", connection);
+            var command = new SQLiteCommand("insert into Question (question,answer, level) values (@pol,@eng,@lvl)", connection);
             command.Parameters.AddWithValue("@pol", question.question);
             command.Parameters.AddWithValue("@eng", question.answer);
+            command.Parameters.AddWithValue("@lvl", lvl);
             command.ExecuteNonQuery();
             connection.Close();
         }
@@ -94,7 +95,7 @@ namespace EasyEnglishWPF
         public static void EditQuestion(Question question)
         {
             connection.Open();
-            var command = new SQLiteCommand("update Question set Polish = @pol, English = @eng where ID = @id", connection);
+            var command = new SQLiteCommand("update Question set question = @pol, answer = @eng where ID = @id", connection);
             command.Parameters.AddWithValue("@id", question.ID);
             command.Parameters.AddWithValue("@pol", question.question);
             command.Parameters.AddWithValue("@eng", question.answer);
@@ -102,52 +103,22 @@ namespace EasyEnglishWPF
             connection.Close();
         }
 
-        public static int QuestionsCount()
-        {
-            int items = 0;
-            connection.Open();
-            var command = new SQLiteCommand("select count(*) from Question", connection);
-            var reader = command.ExecuteReader();
-            while (reader.Read())
-            {
-                items = reader.GetInt32(0);
-            }
-
-            connection.Close();
-            return items;
-        }
-
-        public static List<Question> LoadQuestions(string type)
+        public static List<Question> LoadQuestions(int lvl)
         {
             var list = new List<Question>();
             connection.Open();
-            var command = new SQLiteCommand("select * from Question", connection);
+            var command = new SQLiteCommand("select * from Question where level = @lvl", connection);
+            command.Parameters.AddWithValue("@lvl", lvl);
             var reader = command.ExecuteReader();
-            if (type == "open")
+            while (reader.Read())
             {
-                while (reader.Read())
+                list.Add(new OpenQuestion()
                 {
-                    list.Add(new OpenQuestion()
-                    {
-                        ID = reader.GetInt32(0),
-                        question = (string)reader.GetValue(1),
-                        answer = (string)reader.GetValue(2),
-                    });
-                }
+                    ID = reader.GetInt32(0),
+                    question = (string)reader.GetValue(1),
+                    answer = (string)reader.GetValue(2),
+                });
             }
-            else
-            {
-                while (reader.Read())
-                {
-                    list.Add(new CloseQuestion()
-                    {
-                        ID = reader.GetInt32(0),
-                        question = (string)reader.GetValue(1),
-                        answer = (string)reader.GetValue(2),
-                    });
-                }
-            }
-
             connection.Close();
 
             return list;
@@ -162,24 +133,51 @@ namespace EasyEnglishWPF
             connection.Close();
         }
 
-        public static void SaveSimpleHint(int id, string hint)
+        public static void SavePolishHint(int id, string hint)
         {
             connection.Open();
-            var command = new SQLiteCommand("update Question set SimpleHint = @hint where ID = @id", connection);
+            var command = new SQLiteCommand("update Question set polishhint = @hint where ID = @id", connection);
             command.Parameters.AddWithValue("@id", id);
             command.Parameters.AddWithValue("@hint", hint);
             command.ExecuteNonQuery();
             connection.Close();
         }
 
-        public static string GetSimpleHint(int id)
+        public static void SaveEnglishHint(int id, string hint)
+        {
+            connection.Open();
+            var command = new SQLiteCommand("update Question set englishhint = @hint where ID = @id", connection);
+            command.Parameters.AddWithValue("@id", id);
+            command.Parameters.AddWithValue("@hint", hint);
+            command.ExecuteNonQuery();
+            connection.Close();
+        }
+
+        public static string GetPolishHint(int id)
         {
             string hint = "";
             connection.Open();
-            var command = new SQLiteCommand("select SimpleHint from Question where ID = @id", connection);
+            var command = new SQLiteCommand("select polishhint from Question where ID = @id", connection);
             command.Parameters.AddWithValue("@id", id);
             var reader = command.ExecuteReader();
             while(reader.Read())
+            {
+                hint = reader.GetString(0);
+            }
+
+            connection.Close();
+
+            return hint;
+        }
+
+        public static string GetEnglishHint(int id)
+        {
+            string hint = "";
+            connection.Open();
+            var command = new SQLiteCommand("select englishhint from Question where ID = @id", connection);
+            command.Parameters.AddWithValue("@id", id);
+            var reader = command.ExecuteReader();
+            while (reader.Read())
             {
                 hint = reader.GetString(0);
             }
@@ -207,18 +205,19 @@ namespace EasyEnglishWPF
         #endregion
 
         #region GetDifferent Variants of Questions from database
-        public static List<Question> LoadTenQuestions(string variant, string question_type)
+        public static List<Question> LoadTenQuestions(string variant, string question_type, int lvl)
         {
             var list = new List<Question>();
             connection.Open();
             SQLiteCommand command;
             switch (variant)
             {
-                case "first": command = new SQLiteCommand("select * from Question order by ID DESC LIMIT 10", connection); break;
-                case "last": command = new SQLiteCommand("select * from Question order by ID DESC LIMIT 10", connection); break;
-                case "random": command = new SQLiteCommand("select * from Question order by random() limit 10", connection); break;
-                default: command = new SQLiteCommand("select * from Question order by random() limit 10", connection); break;
+                case "first": command = new SQLiteCommand("select * from Question where level = @lvl order by ID DESC LIMIT 10", connection); break;
+                case "last": command = new SQLiteCommand("select * from Question level = @lvl order by ID DESC LIMIT 10", connection); break;
+                case "random": command = new SQLiteCommand("select * from Question level = @lvl order by random() limit 10", connection); break;
+                default: command = new SQLiteCommand("select * from Question order level = @lvl by random() limit 10", connection); break;
             }
+            command.Parameters.AddWithValue("@lvl", lvl);
             var reader = command.ExecuteReader();
             if (question_type == "open")
             {
@@ -251,13 +250,14 @@ namespace EasyEnglishWPF
 
         }
 
-        public static List<string> LoadFakeAnswersENG(int question_id, int number)
+        public static List<string> LoadFakeAnswersENG(int question_id, int number, int lvl)
         {
             var list = new List<string>();
             connection.Open();
-            var command = new SQLiteCommand("select English from Question where ID != @id order by random() limit @limit", connection);
+            var command = new SQLiteCommand("select answer from Question where ID != @id and level = @lvl order by random() limit @limit", connection);
             command.Parameters.AddWithValue("@id", question_id);
             command.Parameters.AddWithValue("@limit", number);
+            command.Parameters.AddWithValue("@lvl", lvl);
             var reader = command.ExecuteReader();
             while (reader.Read())
             {
@@ -268,13 +268,14 @@ namespace EasyEnglishWPF
             return list;
         }
 
-        public static List<string> LoadFakeAnswersPL(int question_id, int number)
+        public static List<string> LoadFakeAnswersPL(int question_id, int number, int lvl)
         {
             var list = new List<string>();
             connection.Open();
-            var command = new SQLiteCommand("select Polish from Question where ID != @id order by random() limit @limit", connection);
+            var command = new SQLiteCommand("select question from Question where ID != @id and level = @lvl order by random() limit @limit", connection);
             command.Parameters.AddWithValue("@id", question_id);
             command.Parameters.AddWithValue("@limit", number);
+            command.Parameters.AddWithValue("@lvl", lvl);
             var reader = command.ExecuteReader();
             while (reader.Read())
             {

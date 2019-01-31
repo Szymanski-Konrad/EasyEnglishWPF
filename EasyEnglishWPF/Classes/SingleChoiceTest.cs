@@ -29,11 +29,6 @@ namespace EasyEnglishWPF.Classes
             }
         }
 
-        public void LoadQuestions()
-        {
-            Questions = questionChooseStrategy.GetQuestions("single");
-        }
-
         public override void IncreasePoints()
         {
             points++;

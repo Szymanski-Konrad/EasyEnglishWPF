@@ -9,12 +9,12 @@ namespace EasyEnglishWPF.Classes
 {
     public class RandomChoose : IChoose
     {
-        public List<Question> GetQuestions(string reader_type)
+        public List<Question> GetQuestions(string reader_type, int lvl)
         {
             if (reader_type == "single")
-                return new SingleTestReader().ReadTestData("random");
+                return new SingleTestReader().ReadTestData("random", lvl);
             else
-                return new WriteTestReader().ReadTestData("random");
+                return new WriteTestReader().ReadTestData("random", lvl);
         }
     }
 }

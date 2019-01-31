@@ -27,12 +27,6 @@ namespace EasyEnglishWPF.Classes
                 default:
                     break;
             }
-            LoadQuestions();
-        }
-
-        public void LoadQuestions()
-        {
-            Questions = questionChooseStrategy.GetQuestions("write");
         }
 
         public override void IncreasePoints()

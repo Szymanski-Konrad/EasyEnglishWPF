@@ -50,15 +50,24 @@ namespace EasyEnglishWPF.Pages
                 Open.Visibility = Visibility.Visible;
                 test = user.GetTest();
                 ConcreteAggregate concreteAggregate = new ConcreteAggregate();
-                concreteAggregate.AddQuestions(test.questionChooseStrategy.GetQuestions("write"));
+                concreteAggregate.AddQuestions(test.questionChooseStrategy.GetQuestions("write", test.level));
                 iterator = concreteAggregate.CreateIterator(random.Next(3));
 
                 if (iterator.HasNext())
                 {
                     Question question = iterator.Next();
-                    question = new ShortHint(question, Database.GetSimpleHint(question.ID));
+                    if (way == "pol->ang")
+                    {
+                        question = new HintPolish(question, Database.GetPolishHint(question.ID));
+                        PolishOpen.ToolTip = (question as HintPolish).GetHint();
+                    }
+                    else
+                    {
+                        question.ChangeSolvingWay();
+                        question = new HintEnglish(question, Database.GetEnglishHint(question.ID));
+                        PolishOpen.ToolTip = (question as HintEnglish).GetHint();
+                    }
                     PolishOpen.Content = question.question;
-                    PolishOpen.ToolTip = (question as ShortHint).GetHint();
                 }
             }
             else
@@ -67,20 +76,30 @@ namespace EasyEnglishWPF.Pages
                 Test.Visibility = Visibility.Visible;
                 test = user.GetTest();
                 ConcreteAggregate concreteAggregate = new ConcreteAggregate();
-                concreteAggregate.AddQuestions(test.questionChooseStrategy.GetQuestions("single"));
+                concreteAggregate.AddQuestions(test.questionChooseStrategy.GetQuestions("single", test.level));
                 iterator = concreteAggregate.CreateIterator(random.Next(3));
 
                 if (iterator.HasNext())
                 {
                     Question question = iterator.Next();
-                    question = new ShortHint(question, Database.GetSimpleHint(question.ID));
-                    Polish.ToolTip = (question as ShortHint).GetHint();
-                    Polish.Content = question.question;
+
+                    if (way == "pol->ang")
+                    {
+                        question = new HintPolish(question, Database.GetPolishHint(question.ID));
+                        PolishOpen.ToolTip = (question as HintPolish).GetHint();
+                    }
+                    else
+                    {
+                        question.ChangeSolvingWay();
+                        question = new HintEnglish(question, Database.GetEnglishHint(question.ID));
+                        PolishOpen.ToolTip = (question as HintEnglish).GetHint();
+                    }
+
+                    (question as CloseQuestion).GetWrongAnswers(way == "pol->ang" ? true : false, test.level + 1, test.level);
+                    PopulateClosedAnswers((question as CloseQuestion).wrongAnswers);
+                    PolishOpen.Content = question.question;
                 }
-
-                PopulateClosedAnswers();
             }
-
         }
 
         private void Skill_Checked(object sender, RoutedEventArgs e)
@@ -98,53 +117,11 @@ namespace EasyEnglishWPF.Pages
             strategy = (sender as RadioButton).Tag.ToString();
         }
 
-        private void PopulateClosedAnswers()
+        private void PopulateClosedAnswers(List<string> list)
         {
-            List<string> list = new List<string>();
-            if (way == "pol->ang")
-            {
-                switch (skill)
-                {
-                    case "5 odpowiedzi":
-                        list = Database.LoadFakeAnswersENG(iterator.Current().ID, 4);
-                        break;
-                    case "4 odpowiedzi":
-                        list = Database.LoadFakeAnswersENG(iterator.Current().ID, 3);
-                        break;
-                    case "3 odpowiedzi":
-                        list = Database.LoadFakeAnswersENG(iterator.Current().ID, 2);
-                        break;
-                    case "2 odpowiedzi":
-                        list = Database.LoadFakeAnswersENG(iterator.Current().ID, 1);
-                        break;
-                    default:
-                        break;
-                }
-                list.Add(iterator.Current().answer);
-            }
-            else
-            {
-                switch (skill)
-                {
-                    case "5 odpowiedzi":
-                        list = Database.LoadFakeAnswersPL(iterator.Current().ID, 4);
-                        break;
-                    case "4 odpowiedzi":
-                        list = Database.LoadFakeAnswersPL(iterator.Current().ID, 3);
-                        break;
-                    case "3 odpowiedzi":
-                        list = Database.LoadFakeAnswersPL(iterator.Current().ID, 2);
-                        break;
-                    case "2 odpowiedzi":
-                        list = Database.LoadFakeAnswersPL(iterator.Current().ID, 1);
-                        break;
-                    default:
-                        break;
-                }
-                list.Add(iterator.Current().answer);
-            }
-
             Options.Children.Clear();
+            Random random = new Random();
+            list.Insert(random.Next(0, list.Count), iterator.Current().answer);
             foreach (string item in list)
             {
                 RadioButton radioButton = new RadioButton()
@@ -164,45 +141,31 @@ namespace EasyEnglishWPF.Pages
 
         private void Answer_Click(object sender, RoutedEventArgs e)
         {
-            switch (way)
+            if (iterator.HasNext())
             {
-                case "pol->ang":
-                    if (iterator.Current().CheckAnswer(selected_closed))
-                        test.IncreasePoints();
+                if (iterator.Current().CheckAnswer(selected_closed))
+                    test.IncreasePoints();
 
-                    if (iterator.HasNext())
-                    {
-                        Question question = iterator.Next();
-                        question = new ShortHint(question, Database.GetSimpleHint(question.ID));
-                        Polish.ToolTip = (question as ShortHint).GetHint();
-                        Polish.Content = question.question;
-                        PopulateClosedAnswers();
-                    }
-                    else
-                    {
-                        MessageBox.Show(test.GetResult().ToString() + " / 10", "Wynik testu");
-                        Database.SaveHistory(user.GetID(), test.ToString());
-                    }
-                    break;
-                case "ang->pol":
-                    iterator.Current().ChangeSolvingWay();
-                    if (iterator.Current().CheckAnswer(selected_closed))
-                        test.IncreasePoints();
-
-                    if (iterator.HasNext())
-                    {
-                        Question question = iterator.Next();
-                        Polish.Content = question.question;
-                        PopulateClosedAnswers();
-                    }
-                    else
-                    {
-                        MessageBox.Show(test.GetResult().ToString());
-                        Database.SaveHistory(user.GetID(), test.ToString());
-                    }
-                    break;
+                Question question = iterator.Next();
+                if (way == "pol->ang")
+                    question = new HintPolish(question, Database.GetPolishHint(question.ID));
+                else
+                {
+                    question = new HintEnglish(question, Database.GetEnglishHint(question.ID));
+                    question.ChangeSolvingWay();
+                }
+                //sprawdzić czy działa
+                Polish.ToolTip = (question as Hint).GetHint();
+                Polish.Content = question.question;
+                (question as CloseQuestion).GetWrongAnswers(way == "pol->ang" ? true : false, test.level + 1, test.level);
+                PopulateClosedAnswers((question as CloseQuestion).wrongAnswers);
+                PolishOpen.Content = question.question;
             }
-            
+            else
+            {
+                MessageBox.Show(test.GetResult().ToString() + " / 10", "Wynik testu");
+                Database.SaveHistory(user.GetID(), test.ToString());
+            }
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
@@ -212,41 +175,29 @@ namespace EasyEnglishWPF.Pages
 
         private void AnswerOpen_Click(object sender, RoutedEventArgs e)
         {
-            switch (way)
+            if (iterator.HasNext())
             {
-                case "pol->ang":
-                    if (iterator.Current().CheckAnswer(Answer_Eng.Text))
-                        test.IncreasePoints();
+                if (iterator.Current().CheckAnswer(selected_closed))
+                    test.IncreasePoints();
 
-                    if (iterator.HasNext())
-                    {
-                        Question question = iterator.Next();
-                        PolishOpen.Content = question.question;
-                    }
-                    else
-                    {
-                        MessageBox.Show(test.GetResult().ToString());
-                        Database.SaveHistory(user.GetID(), test.ToString());
-                    }
-                    break;
-                case "ang->pol":
-                    iterator.Current().ChangeSolvingWay();
-                    if (iterator.Current().CheckAnswer(Answer_Eng.Text))
-                        test.IncreasePoints();
-
-                    if (iterator.HasNext())
-                    {
-                        Question question = iterator.Next();
-                        PolishOpen.Content = question.question;
-                    }
-                    else
-                    {
-                        MessageBox.Show(test.GetResult().ToString());
-                        Database.SaveHistory(user.GetID(), test.ToString());
-                    }
-                    break;
+                Question question = iterator.Next();
+                if (way == "pol->ang")
+                    question = new HintPolish(question, Database.GetPolishHint(question.ID));
+                else
+                {
+                    question = new HintEnglish(question, Database.GetEnglishHint(question.ID));
+                    question.ChangeSolvingWay();
+                }
+                //sprawdzić czy działa
+                Polish.ToolTip = (question as Hint).GetHint();
+                Polish.Content = question.question;
+                PolishOpen.Content = question.question;
             }
-            
+            else
+            {
+                MessageBox.Show(test.GetResult().ToString() + " / 10", "Wynik testu");
+                Database.SaveHistory(user.GetID(), test.ToString());
+            }
         }
     }
 }
