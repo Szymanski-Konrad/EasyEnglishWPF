@@ -16,17 +16,7 @@ namespace EasyEnglishWPF.Classes
 
         public List<Question> ReadTestData(string buildTestType)
         {
-            switch (buildTestType)
-            {
-                case "first":
-                    return Database.LoadFirst();
-                case "last":
-                    return Database.LoadLast();
-                case "random":
-                    return Database.LoadRandom();
-                default:
-                    return null;
-            }
+            return Database.LoadTenQuestions(buildTestType, "open");
         }
     }
 }

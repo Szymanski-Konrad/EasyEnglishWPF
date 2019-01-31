@@ -74,12 +74,12 @@ namespace EasyEnglishWPF.Pages
                 return;
             }
 
-            Database.EditQuestion(new Question()
-            {
-                ID = (Data.SelectedItem as Question).ID,
-                Polish = PolishEdit.Text,
-                English = EnglishEdit.Text
-            });
+            //Database.EditQuestion(new Question()
+            //{
+            //    ID = (Data.SelectedItem as Question).ID,
+            //    Polish = PolishEdit.Text,
+            //    English = EnglishEdit.Text
+            //});
 
             PopulateListView();
             PolishAdd.Text = EnglishAdd.Text = SimpleHintAdd.Text = BetterHintAdd.Text = String.Empty;
@@ -93,25 +93,25 @@ namespace EasyEnglishWPF.Pages
                 return;
             }
 
-            Database.SaveQuestion(
-               new Question()
-               {
-                   Polish = PolishAdd.Text,
-                   English = EnglishAdd.Text,
-               });
+            //Database.SaveQuestion(
+            //   new Question()
+            //   {
+            //       Polish = PolishAdd.Text,
+            //       English = EnglishAdd.Text,
+            //   });
 
-            int id = Database.GetLastID();
-            Database.SaveSimpleHint(id, SimpleHintAdd.Text);
-            Database.SaveBetterHint(id, BetterHintAdd.Text);
-            PolishAdd.Text = EnglishAdd.Text = SimpleHintAdd.Text = BetterHintAdd.Text = String.Empty;
+            //int id = Database.GetLastID();
+            //Database.SaveSimpleHint(id, SimpleHintAdd.Text);
+            //Database.SaveBetterHint(id, BetterHintAdd.Text);
+            //PolishAdd.Text = EnglishAdd.Text = SimpleHintAdd.Text = BetterHintAdd.Text = String.Empty;
 
             PopulateListView();
         }
 
         private void PopulateListView()
         {
-            var list = Database.LoadQuestions();
-            Data.ItemsSource = list;
+            //var list = Database.LoadQuestions();
+            //Data.ItemsSource = list;
         }
 
         private void ModeCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -122,14 +122,14 @@ namespace EasyEnglishWPF.Pages
 
         private void Data_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Question question = (Question)Data.SelectedItem;
-            if (question != null)
-            {
-                PolishEdit.Text = question.Polish;
-                EnglishEdit.Text = question.English;
-                SimpleHintEdit.Text = Database.GetSimpleHint(question.ID);
-                BetterHintEdit.Text = Database.GetBetterHint(question.ID);
-            }
+            //Question question = (Question)Data.SelectedItem;
+            //if (question != null)
+            //{
+            //    PolishEdit.Text = question.Polish;
+            //    EnglishEdit.Text = question.English;
+            //    SimpleHintEdit.Text = Database.GetSimpleHint(question.ID);
+            //    BetterHintEdit.Text = Database.GetBetterHint(question.ID);
+            //}
         }
 
         private void Data_Loaded(object sender, RoutedEventArgs e)

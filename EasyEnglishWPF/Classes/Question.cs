@@ -6,30 +6,45 @@ using System.Threading.Tasks;
 
 namespace EasyEnglishWPF.Classes
 {
-    public class Question
+    public abstract class Question
     {
+        public Question()
+        {
+
+        }
+
+        public Question(int id, string q, string a)
+        {
+            ID = id;
+            question = q;
+            answer = a;
+        }
+
         public int ID { get; set; }
-        public string Polish { get; set; }
-        public string English { get; set; }
-    
-        virtual public string ShowHint()
+
+        public string question { get; set; }
+        public string answer { get; set; }
+
+        public bool CheckAnswer(string a)
         {
-            return "Podpowiedź: ";
+            return string.Equals(answer, a, StringComparison.OrdinalIgnoreCase);
         }
 
-        public bool CheckAnswer(string answer)
+        public void ChangeSolvingWay()
         {
-            return string.Equals(English, answer, StringComparison.OrdinalIgnoreCase);
+            string x = question;
+            question = answer;
+            answer = x;
         }
 
-        public bool CheckRevertAnswer(string answer)
+        public virtual string GetHint()
         {
-            return string.Equals(Polish, answer, StringComparison.OrdinalIgnoreCase);
+            return "Brak podpowiedzi";
         }
 
         public override string ToString()
         {
-            return Polish + " - " + English;
+            return question + " - " + answer;
         }
     }
 }

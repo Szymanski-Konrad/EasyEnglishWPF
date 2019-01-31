@@ -10,8 +10,23 @@ namespace EasyEnglishWPF.Patterns
     /// <summary>
     /// Dekorator
     /// </summary>
-    public abstract class Hint : Question
+    public class Hint : Question
     {
-        public abstract override string ShowHint();
+        protected new Question question;
+
+        public Hint(Question q) : base(q.ID, q.question, q.answer)
+        {
+            question = q;    
+        }
+
+        public override string GetHint()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override string ToString()
+        {
+            return base.ToString();
+        }
     }
 }

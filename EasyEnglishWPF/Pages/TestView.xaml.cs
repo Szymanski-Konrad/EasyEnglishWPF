@@ -56,10 +56,9 @@ namespace EasyEnglishWPF.Pages
                 if (iterator.HasNext())
                 {
                     Question question = iterator.Next();
-                    question = new ExtendedHint(new ShortHint(question, Database.GetSimpleHint(question.ID)), Database.GetBetterHint(question.ID));
-                    if (way == "pol->ang") PolishOpen.Content = question.Polish;
-                    else PolishOpen.Content = question.English;
-                    PolishOpen.ToolTip = question.ShowHint();
+                    question = new ShortHint(question, Database.GetSimpleHint(question.ID));
+                    PolishOpen.Content = question.question;
+                    PolishOpen.ToolTip = (question as ShortHint).ShowHint();
                 }
             }
             else
@@ -74,10 +73,9 @@ namespace EasyEnglishWPF.Pages
                 if (iterator.HasNext())
                 {
                     Question question = iterator.Next();
-                    question = new ExtendedHint(new ShortHint(question, Database.GetSimpleHint(question.ID)), Database.GetBetterHint(question.ID));
-                    Polish.ToolTip = question.ShowHint();
-                    if (way == "pol->ang") Polish.Content = question.Polish;
-                    else Polish.Content = question.English;
+                    question = new ShortHint(question, Database.GetSimpleHint(question.ID));
+                    Polish.ToolTip = (question as ShortHint).ShowHint();
+                    Polish.Content = question.question;
                 }
 
                 PopulateClosedAnswers();
@@ -122,7 +120,7 @@ namespace EasyEnglishWPF.Pages
                     default:
                         break;
                 }
-                list.Add(iterator.Current().English);
+                list.Add(iterator.Current().answer);
             }
             else
             {
@@ -143,7 +141,7 @@ namespace EasyEnglishWPF.Pages
                     default:
                         break;
                 }
-                list.Add(iterator.Current().Polish);
+                list.Add(iterator.Current().answer);
             }
 
             Options.Children.Clear();
@@ -175,9 +173,9 @@ namespace EasyEnglishWPF.Pages
                     if (iterator.HasNext())
                     {
                         Question question = iterator.Next();
-                        question = new ExtendedHint(new ShortHint(question, Database.GetSimpleHint(question.ID)), Database.GetBetterHint(question.ID));
-                        Polish.ToolTip = question.ShowHint();
-                        Polish.Content = question.Polish;
+                        question = new ShortHint(question, Database.GetSimpleHint(question.ID));
+                        Polish.ToolTip = (question as ShortHint).ShowHint();
+                        Polish.Content = question.question;
                         PopulateClosedAnswers();
                     }
                     else
@@ -187,13 +185,14 @@ namespace EasyEnglishWPF.Pages
                     }
                     break;
                 case "ang->pol":
-                    if (iterator.Current().CheckRevertAnswer(selected_closed))
+                    iterator.Current().ChangeSolvingWay();
+                    if (iterator.Current().CheckAnswer(selected_closed))
                         test.IncreasePoints();
 
                     if (iterator.HasNext())
                     {
                         Question question = iterator.Next();
-                        Polish.Content = question.English;
+                        Polish.Content = question.question;
                         PopulateClosedAnswers();
                     }
                     else
@@ -222,7 +221,7 @@ namespace EasyEnglishWPF.Pages
                     if (iterator.HasNext())
                     {
                         Question question = iterator.Next();
-                        PolishOpen.Content = question.Polish;
+                        PolishOpen.Content = question.question;
                     }
                     else
                     {
@@ -231,13 +230,14 @@ namespace EasyEnglishWPF.Pages
                     }
                     break;
                 case "ang->pol":
-                    if (iterator.Current().CheckRevertAnswer(Answer_Eng.Text))
+                    iterator.Current().ChangeSolvingWay();
+                    if (iterator.Current().CheckAnswer(Answer_Eng.Text))
                         test.IncreasePoints();
 
                     if (iterator.HasNext())
                     {
                         Question question = iterator.Next();
-                        PolishOpen.Content = question.English;
+                        PolishOpen.Content = question.question;
                     }
                     else
                     {

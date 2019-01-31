@@ -9,21 +9,16 @@ namespace EasyEnglishWPF.Classes
 {
     public class ShortHint : Hint
     {
-        Question question;
         private string hint;
 
-        public ShortHint(Question q, string h)
+        public ShortHint(Question q, string h) : base(q)
         {
-            question = q;
-            this.English = q.English;
-            this.ID = q.ID;
-            this.Polish = q.Polish;
             hint = h;
         }
 
-        public override string ShowHint()
+        public string ShowHint()
         {
-            return question.ShowHint() + ", " + hint;
+            return hint;
         }
     }
 }

@@ -41,15 +41,15 @@ namespace EasyEnglishWPF.Pages
             if (iterator.HasNext())
             {
                 Question question = (Question)iterator.Next();
-                question = new ExtendedHint(new ShortHint(question, Database.GetSimpleHint(question.ID)), Database.GetBetterHint(question.ID));
-                questionLabel.ToolTip = question.ShowHint();
+                question = new ShortHint(question, Database.GetSimpleHint(question.ID));
+                questionLabel.ToolTip = (question as ShortHint).ShowHint();
                 if (way == "pol->ang")
                 {
-                    questionLabel.Content = question.Polish;
+                    questionLabel.Content = question.question;
                 }
                 else
                 {
-                    questionLabel.Content = question.English;
+                    questionLabel.Content = question.answer;
                 }
             }
         }
@@ -67,7 +67,7 @@ namespace EasyEnglishWPF.Pages
         {
             if (way == "pol->ang")
             {
-                if (iterator.Current().English == answerBox.Text)
+                if (iterator.Current().answer == answerBox.Text)
                 {
                     checkBtn.Background = Brushes.Green;
                     canNext = true;
@@ -80,7 +80,7 @@ namespace EasyEnglishWPF.Pages
             }
             else if (way == "ang->pol")
             {
-                if (iterator.Current().Polish == answerBox.Text)
+                if (iterator.Current().answer == answerBox.Text)
                 {
                     checkBtn.Background = Brushes.Green;
                     canNext = true;
@@ -101,15 +101,15 @@ namespace EasyEnglishWPF.Pages
                 if (iterator.HasNext())
                 {
                     Question question = (Question)iterator.Next();
-                    question = new ExtendedHint(new ShortHint(question, Database.GetSimpleHint(question.ID)), Database.GetBetterHint(question.ID));
-                    questionLabel.ToolTip = question.ShowHint();
+                    question = new ShortHint(question, Database.GetSimpleHint(question.ID));
+                    questionLabel.ToolTip = (question as ShortHint).ShowHint();
                     if (way == "pol->ang")
                     {
-                        questionLabel.Content = question.Polish;
+                        questionLabel.Content = question.question;
                     }
                     else
                     {
-                        questionLabel.Content = question.English;
+                        questionLabel.Content = question.answer;
                     }
                 }
                 else
@@ -133,13 +133,13 @@ namespace EasyEnglishWPF.Pages
             if (iterator != null)
             {
                 Question question = (Question)iterator.Current();
-                question = new ExtendedHint(new ShortHint(question, Database.GetSimpleHint(question.ID)), Database.GetBetterHint(question.ID));
-                questionLabel.ToolTip = question.ShowHint();
+                question = new ShortHint(question, Database.GetSimpleHint(question.ID));
+                questionLabel.ToolTip = question.GetHint();
 
                 if (way == "pol->ang")
                 {
-                    questionLabel.Content = question.Polish;
-                    if (iterator.Current().English == answerBox.Text)
+                    questionLabel.Content = question.question;
+                    if (iterator.Current().answer == answerBox.Text)
                     {
                         checkBtn.Background = Brushes.Green;
                         canNext = true;
@@ -152,8 +152,8 @@ namespace EasyEnglishWPF.Pages
                 }
                 else
                 {
-                    questionLabel.Content = question.English;
-                    if (iterator.Current().Polish == answerBox.Text)
+                    questionLabel.Content = question.question;
+                    if (iterator.Current().answer == answerBox.Text)
                     {
                         checkBtn.Background = Brushes.Green;
                         canNext = true;
