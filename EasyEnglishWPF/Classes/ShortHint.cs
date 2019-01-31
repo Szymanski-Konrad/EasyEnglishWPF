@@ -16,7 +16,7 @@ namespace EasyEnglishWPF.Classes
             hint = h;
         }
 
-        public string ShowHint()
+        public override string GetHint()
         {
             return hint;
         }

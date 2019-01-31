@@ -42,7 +42,7 @@ namespace EasyEnglishWPF.Pages
             {
                 Question question = (Question)iterator.Next();
                 question = new ShortHint(question, Database.GetSimpleHint(question.ID));
-                questionLabel.ToolTip = (question as ShortHint).ShowHint();
+                questionLabel.ToolTip = (question as ShortHint).GetHint();
                 if (way == "pol->ang")
                 {
                     questionLabel.Content = question.question;
@@ -102,7 +102,7 @@ namespace EasyEnglishWPF.Pages
                 {
                     Question question = (Question)iterator.Next();
                     question = new ShortHint(question, Database.GetSimpleHint(question.ID));
-                    questionLabel.ToolTip = (question as ShortHint).ShowHint();
+                    questionLabel.ToolTip = (question as ShortHint).GetHint();
                     if (way == "pol->ang")
                     {
                         questionLabel.Content = question.question;

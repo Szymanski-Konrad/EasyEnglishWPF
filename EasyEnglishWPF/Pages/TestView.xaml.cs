@@ -58,7 +58,7 @@ namespace EasyEnglishWPF.Pages
                     Question question = iterator.Next();
                     question = new ShortHint(question, Database.GetSimpleHint(question.ID));
                     PolishOpen.Content = question.question;
-                    PolishOpen.ToolTip = (question as ShortHint).ShowHint();
+                    PolishOpen.ToolTip = (question as ShortHint).GetHint();
                 }
             }
             else
@@ -74,7 +74,7 @@ namespace EasyEnglishWPF.Pages
                 {
                     Question question = iterator.Next();
                     question = new ShortHint(question, Database.GetSimpleHint(question.ID));
-                    Polish.ToolTip = (question as ShortHint).ShowHint();
+                    Polish.ToolTip = (question as ShortHint).GetHint();
                     Polish.Content = question.question;
                 }
 
@@ -174,7 +174,7 @@ namespace EasyEnglishWPF.Pages
                     {
                         Question question = iterator.Next();
                         question = new ShortHint(question, Database.GetSimpleHint(question.ID));
-                        Polish.ToolTip = (question as ShortHint).ShowHint();
+                        Polish.ToolTip = (question as ShortHint).GetHint();
                         Polish.Content = question.question;
                         PopulateClosedAnswers();
                     }
