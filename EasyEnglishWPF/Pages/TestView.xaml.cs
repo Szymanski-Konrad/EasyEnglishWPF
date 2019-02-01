@@ -25,6 +25,7 @@ namespace EasyEnglishWPF.Pages
         private string skill = "2 odpowiedzi";
         private string way = "pol->ang";
         private string strategy = "first";
+        private string type = "Otwarty";
 
         private string selected_closed = "";
 
@@ -110,6 +111,11 @@ namespace EasyEnglishWPF.Pages
         private void Skill_Checked(object sender, RoutedEventArgs e)
         {
             skill = (sender as RadioButton).Content.ToString();
+        }
+
+        private void Type_Checked(object sender, RoutedEventArgs e)
+        {
+            type = (sender as RadioButton).Content.ToString();
         }
 
         private void Way_Checked(object sender, RoutedEventArgs e)
