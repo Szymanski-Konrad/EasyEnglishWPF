@@ -16,6 +16,6 @@
         <RadioButton Checked="Way_Checked" GroupName="way" Content="pol->ang" HorizontalAlignment="Left" Margin="100,139,0,0" VerticalAlignment="Top" IsChecked="True"/>
         <RadioButton Checked="Way_Checked" GroupName="way" Content="ang->pol" HorizontalAlignment="Left" Margin="203,139,0,0" VerticalAlignment="Top"/>
         <Label Content="Poziom testu: " HorizontalAlignment="Left" Margin="100,200,0,0" VerticalAlignment="Top"/>
-        <Label Name="LvlLabel" Content="Poziom" HorizontalAlignment="Left" Margin="203,200,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="LvlLabel" Content="Poziom" HorizontalAlignment="Left" Margin="203,200,0,0" VerticalAlignment="Top"/>
     </Grid>
 </UserControl>

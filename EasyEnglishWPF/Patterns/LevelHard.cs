@@ -8,5 +8,9 @@ namespace EasyEnglishWPF.Patterns
 {
     public class LevelHard : Level
     {
+        public override string ToString()
+        {
+            return "Poziom Trudny";
+        }
     }
 }

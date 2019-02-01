@@ -8,5 +8,9 @@ namespace EasyEnglishWPF.Patterns
 {
     public class LevelNormal : Level
     {
+        public override string ToString()
+        {
+            return "Poziom Średni";
+        }
     }
 }

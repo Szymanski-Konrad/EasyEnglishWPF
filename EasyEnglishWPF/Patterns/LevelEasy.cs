@@ -8,5 +8,9 @@ namespace EasyEnglishWPF.Patterns
 {
     public class LevelEasy : Level
     {
+        public override string ToString()
+        {
+            return "Poziom Łatwy";
+        }
     }
 }

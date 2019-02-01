@@ -29,10 +29,6 @@ namespace EasyEnglishWPF.Pages
         private bool canNext = false;
         private IIterator iterator;
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="StudyModeWindow"/> class.
-        /// </summary>
-        /// <param name="user">The user.</param>
         public StudyModeWindow(ref User user)
         {
             InitializeComponent();
@@ -44,6 +40,7 @@ namespace EasyEnglishWPF.Pages
                     "random");
             user.MakeNewTest(builder);
             test = builder.PrintTest();
+            LvlLabel.Content = test.level.ToString();
 
             ConcreteAggregate concreteAggregate = new ConcreteAggregate();
             concreteAggregate.AddQuestions(test.questionChooseStrategy.GetQuestions("write", test.level.Nubmer));
