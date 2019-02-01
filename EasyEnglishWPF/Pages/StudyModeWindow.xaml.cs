@@ -22,20 +22,28 @@ namespace EasyEnglishWPF.Pages
     /// </summary>
     public partial class StudyModeWindow : UserControl, ISwitchable
     {
+        private Random random = new Random();
         private string way = "pol->ang";
         public Test test;
 
         private bool canNext = false;
         private IIterator iterator;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="StudyModeWindow"/> class.
+        /// </summary>
+        /// <param name="user">The user.</param>
         public StudyModeWindow(ref User user)
         {
             InitializeComponent();
-            //user.CreateTest("open", "random");
-            IBuilder builder = new TestOpenBuilder(new FactoryEasy(), "random");
+            var tmp = random.Next(1, 4);
+            IBuilder builder = new TestOpenBuilder(
+                    tmp == 1 ? new FactoryVeryEasy() :
+                    tmp == 2 ? new FactoryEasy() :
+                    tmp == 3 ? new FactoryNormal() : new FactoryHard() as AbstractFactory,
+                    "random");
             user.MakeNewTest(builder);
             test = builder.PrintTest();
-            //test = user.GetTest();
 
             ConcreteAggregate concreteAggregate = new ConcreteAggregate();
             concreteAggregate.AddQuestions(test.questionChooseStrategy.GetQuestions("write", test.level.Nubmer));
@@ -128,7 +136,7 @@ namespace EasyEnglishWPF.Pages
                 {
                     question = new HintPolish(question, Database.GetPolishHint(question.ID));
                     questionLabel.ToolTip = (question as HintPolish).GetHint();
-                    
+
                 }
 
                 questionLabel.Content = question.question;
