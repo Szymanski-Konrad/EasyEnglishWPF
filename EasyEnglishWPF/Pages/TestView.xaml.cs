@@ -97,8 +97,10 @@ namespace EasyEnglishWPF.Pages
                         Polish.ToolTip = (question as HintEnglish).GetHint();
                     }
 
-
-                    (iterator.Current() as CloseQuestion).GetWrongAnswers(way == "pol->ang" ? false : true, test.level.Nubmer + 1, test.level.Nubmer);
+                    if (way == "pol->ang")
+                        (iterator.Current() as CloseQuestion).GetWrongAnswers(false, test.level.Nubmer + 1, test.level.Nubmer);
+                    else
+                        (iterator.Current() as CloseQuestion).GetWrongAnswers(true, test.level.Nubmer + 1, test.level.Nubmer);
                     PopulateClosedAnswers((iterator.Current() as CloseQuestion).wrongAnswers);
                     Polish.Content = question.question;
                 }
@@ -155,14 +157,16 @@ namespace EasyEnglishWPF.Pages
                     question = new HintPolish(question, Database.GetPolishHint(question.ID));
                 else
                 {
-                    question = new HintEnglish(question, Database.GetEnglishHint(question.ID));
                     question.ChangeSolvingWay();
+                    question = new HintEnglish(question, Database.GetEnglishHint(question.ID));
                 }
                 //sprawdzić czy działa
                 Polish.ToolTip = (question as Hint).GetHint();
                 Polish.Content = question.question;
-                (iterator.Current() as CloseQuestion).GetWrongAnswers(way == "pol->ang" ? false : true, test.level.Nubmer + 1, test.level.Nubmer);
-                PopulateClosedAnswers((iterator.Current() as CloseQuestion).wrongAnswers);
+                if (way == "pol->ang")
+                    (iterator.Current() as CloseQuestion).GetWrongAnswers(false, test.level.Nubmer + 1, test.level.Nubmer);
+                else
+                    (iterator.Current() as CloseQuestion).GetWrongAnswers(true, test.level.Nubmer + 1, test.level.Nubmer); PopulateClosedAnswers((iterator.Current() as CloseQuestion).wrongAnswers);
                 Polish.Content = question.question;
             }
             else

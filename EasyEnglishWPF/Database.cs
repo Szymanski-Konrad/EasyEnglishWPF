@@ -213,9 +213,9 @@ namespace EasyEnglishWPF
             switch (variant)
             {
                 case "first": command = new SQLiteCommand("select * from Question where level = @lvl order by ID DESC LIMIT 10", connection); break;
-                case "last": command = new SQLiteCommand("select * from Question level = @lvl order by ID DESC LIMIT 10", connection); break;
-                case "random": command = new SQLiteCommand("select * from Question level = @lvl order by random() limit 10", connection); break;
-                default: command = new SQLiteCommand("select * from Question level = @lvl order by random() limit 10", connection); break;
+                case "last": command = new SQLiteCommand("select * from Question where level = @lvl order by ID DESC LIMIT 10", connection); break;
+                case "random": command = new SQLiteCommand("select * from Question where level = @lvl order by random() limit 10", connection); break;
+                default: command = new SQLiteCommand("select * from Question where level = @lvl order by random() limit 10", connection); break;
             }
             command.Parameters.AddWithValue("@lvl", lvl);
             var reader = command.ExecuteReader();
