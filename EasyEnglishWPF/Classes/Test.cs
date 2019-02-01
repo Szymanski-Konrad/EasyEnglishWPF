@@ -7,7 +7,7 @@ using EasyEnglishWPF.Patterns;
 
 namespace EasyEnglishWPF.Classes
 {
-    public abstract class Test : ILevel, IType
+    public abstract class Test : IType
     {
         public ITestDBReader TestReader { get; set; }
         public List<Question> Questions { get; set; }
@@ -18,7 +18,7 @@ namespace EasyEnglishWPF.Classes
 
         protected string testName = "test";
 
-        public int level { get; set; } 
+        public Level level { get; set; } 
         public string type { get; set; }
 
         public abstract void IncreasePoints();

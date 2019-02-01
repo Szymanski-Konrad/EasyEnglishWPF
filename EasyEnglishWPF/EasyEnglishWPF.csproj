@@ -75,7 +75,8 @@
     </ApplicationDefinition>
     <Compile Include="Classes\CloseQuestion.cs" />
     <Compile Include="Classes\OpenQuestion.cs" />
-    <Compile Include="Classes\TestBuilder.cs" />
+    <Compile Include="Classes\TestCloseBuilder.cs" />
+    <Compile Include="Classes\TestOpenBuilder.cs" />
     <Compile Include="Classes\WriteTestReader.cs" />
     <Compile Include="Database.cs" />
     <Compile Include="ISwitchable.cs" />
@@ -94,6 +95,16 @@
     <Compile Include="Pages\TestView.xaml.cs">
       <DependentUpon>TestView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Patterns\FactoryEasy.cs" />
+    <Compile Include="Patterns\FactoryHard.cs" />
+    <Compile Include="Patterns\FactoryNormal.cs" />
+    <Compile Include="Patterns\FactoryVeryEasy.cs" />
+    <Compile Include="Patterns\IBuilder.cs" />
+    <Compile Include="Patterns\Level.cs" />
+    <Compile Include="Patterns\LevelEasy.cs" />
+    <Compile Include="Patterns\LevelHard.cs" />
+    <Compile Include="Patterns\LevelNormal.cs" />
+    <Compile Include="Patterns\LevelVeryEasy.cs" />
     <Compile Include="Switcher.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -148,12 +159,11 @@
   <ItemGroup>
     <Compile Include="Patterns\ICommand.cs" />
     <Compile Include="Patterns\Hint.cs" />
-    <Compile Include="Patterns\IAbstractFactory.cs" />
+    <Compile Include="Patterns\AbstractFactory.cs" />
     <Compile Include="Patterns\Builder.cs" />
     <Compile Include="Patterns\IAggregate.cs" />
     <Compile Include="Patterns\IChoose.cs" />
     <Compile Include="Patterns\IIterator.cs" />
-    <Compile Include="Patterns\ILevel.cs" />
     <Compile Include="Patterns\ITestDBReader.cs" />
     <Compile Include="Patterns\IType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">

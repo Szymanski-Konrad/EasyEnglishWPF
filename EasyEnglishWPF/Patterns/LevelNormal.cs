@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace EasyEnglishWPF.Patterns
 {
-    interface ILevel
+    public class LevelNormal : Level
     {
-        int level { get; set; }
     }
 }

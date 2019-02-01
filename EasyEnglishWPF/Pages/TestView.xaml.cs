@@ -46,9 +46,10 @@ namespace EasyEnglishWPF.Pages
 
             if (skill == "test otwarty")
             {
-                user.CreateTest("open", strategy);
+                IBuilder builder = new TestOpenBuilder(new FactoryEasy(), strategy);
+                user.MakeNewTest(builder);
+                this.test = builder.PrintTest();
                 Open.Visibility = Visibility.Visible;
-                test = user.GetTest();
                 ConcreteAggregate concreteAggregate = new ConcreteAggregate();
                 concreteAggregate.AddQuestions(test.questionChooseStrategy.GetQuestions("write"));
                 iterator = concreteAggregate.CreateIterator(random.Next(3));
@@ -63,9 +64,10 @@ namespace EasyEnglishWPF.Pages
             }
             else
             {
-                user.CreateTest("close", strategy);
+                IBuilder builder = new TestCloseBuilder(new FactoryEasy(), strategy);
+                user.MakeNewTest(builder);
+                this.test = builder.PrintTest();
                 Test.Visibility = Visibility.Visible;
-                test = user.GetTest();
                 ConcreteAggregate concreteAggregate = new ConcreteAggregate();
                 concreteAggregate.AddQuestions(test.questionChooseStrategy.GetQuestions("single"));
                 iterator = concreteAggregate.CreateIterator(random.Next(3));

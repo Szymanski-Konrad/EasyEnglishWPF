@@ -31,8 +31,11 @@ namespace EasyEnglishWPF.Pages
         public StudyModeWindow(ref User user)
         {
             InitializeComponent();
-            user.CreateTest("open", "random");
-            test = user.GetTest();
+            //user.CreateTest("open", "random");
+            IBuilder builder = new TestOpenBuilder(new FactoryEasy(), "random");
+            user.MakeNewTest(builder);
+            test = builder.PrintTest();
+            //test = user.GetTest();
 
             ConcreteAggregate concreteAggregate = new ConcreteAggregate();
             concreteAggregate.AddQuestions(test.questionChooseStrategy.GetQuestions("write"));

@@ -11,7 +11,7 @@ namespace EasyEnglishWPF.Classes
     public class User
     {
         private string id;
-        private Builder builder;
+        //private IBuilder builder;
 
         public User(string id)
         {
@@ -23,20 +23,27 @@ namespace EasyEnglishWPF.Classes
             return id;
         }
 
-        public void SetBuilder(Builder builder)
+        //public void SetBuilder(/*IBuilder builder*/)
+        //{
+        //this.builder = builder;
+        //}
+
+
+        public void MakeNewTest(IBuilder builder)
         {
-            this.builder = builder;
+            builder.SetType();
+            builder.SetStrategy();
         }
 
-        public Test GetTest()
-        {
-            return builder.GetTest();
-        }
+        //public Test GetTest()
+        //{
+        //    return builder.GetTest();
+        //}
 
-        public void CreateTest(string type, string strategy)
-        {
-            builder.CreateNewTest(type, strategy);
-        }
+        //public void CreateTest(string type, string strategy)
+        //{
+        //    builder.CreateNewTest(type, strategy);
+        //}
 
         public void StartLearning()
         {

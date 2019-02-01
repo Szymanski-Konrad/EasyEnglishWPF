@@ -7,27 +7,11 @@ using System.Threading.Tasks;
 
 namespace EasyEnglishWPF.Classes
 {
-    public class WriteAnswerTest : Test, IAbstractFactory
+    public class WriteAnswerTest : Test
     {
-        public WriteAnswerTest(string type, string strategy)
+        public WriteAnswerTest()
         {
             testName = "Test własnej odpowiedzi";
-            this.type = type;
-            switch (strategy)
-            {
-                case "first":
-                    questionChooseStrategy = new FirstChoose();
-                    break;
-                case "last":
-                    questionChooseStrategy = new LastChoose();
-                    break;
-                case "random":
-                    questionChooseStrategy = new RandomChoose();
-                    break;
-                default:
-                    break;
-            }
-            LoadQuestions();
         }
 
         public void LoadQuestions()
@@ -43,11 +27,6 @@ namespace EasyEnglishWPF.Classes
         public override int GetResult()
         {
             return points;
-        }
-
-        public void SetLevel(int level)
-        {
-            this.level = level;
         }
     }
 }

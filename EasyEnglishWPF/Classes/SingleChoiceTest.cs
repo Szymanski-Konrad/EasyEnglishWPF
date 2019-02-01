@@ -7,26 +7,11 @@ using System.Threading.Tasks;
 
 namespace EasyEnglishWPF.Classes
 {
-    public class SingleChoiceTest : Test, IAbstractFactory
+    public class SingleChoiceTest : Test
     {
-        public SingleChoiceTest(string type, string strategy)
+        public SingleChoiceTest()
         {
             testName = "Test jednokrotnego wyboru";
-            this.type = type;
-            switch (strategy)
-            {
-                case "first":
-                    questionChooseStrategy = new FirstChoose();
-                    break;
-                case "last":
-                    questionChooseStrategy = new LastChoose();
-                    break;
-                case "random":
-                    questionChooseStrategy = new RandomChoose();
-                    break;
-                default:
-                    break;
-            }
         }
 
         public void LoadQuestions()
@@ -42,11 +27,6 @@ namespace EasyEnglishWPF.Classes
         public override int GetResult()
         {
             return points;
-        }
-
-        public void SetLevel(int level)
-        {
-            this.level = level;
         }
     }
 }
