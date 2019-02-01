@@ -1,223 +1,308 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Access">
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
   <Class Name="EasyEnglishWPF.Database">
-    <Position X="3.25" Y="0.75" Width="1.5" />
+    <Position X="9.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAIAAEAAAAAAAAAEAAABAgABEABCAAAAEEgAABACMkA=</HashCode>
+      <HashCode>AAIAAAAAEAgEAAAEAAABCAAAEAAAAAAAAEgAABACE0A=</HashCode>
       <FileName>Database.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="EasyEnglishWPF.Classes.ConcreteAggregate" BaseTypeListCollapsed="true">
-    <Position X="17" Y="3" Width="1.5" />
+  <Class Name="EasyEnglishWPF.Classes.CloseQuestion">
+    <Position X="0.75" Y="12.25" Width="4.5" />
     <TypeIdentifier>
-      <HashCode>AAIAAAAAAAAAAAAAAAACAAQAKARAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>ABAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\CloseQuestion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EasyEnglishWPF.Classes.ConcreteAggregate" BaseTypeListCollapsed="true">
+    <Position X="33" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAACAAACAAQAAARAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Classes\ConcreteAggregate.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
+    <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="EasyEnglishWPF.Classes.EdgeIterator" BaseTypeListCollapsed="true">
-    <Position X="25.75" Y="4.75" Width="1.5" />
+    <Position X="29.5" Y="2.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AggAAAAAAAAABAACAACAAABAAAAQAAAAAAAAAAAAAAg=</HashCode>
       <FileName>Classes\EdgeIterator.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="EasyEnglishWPF.Classes.ExtendedHint">
-    <Position X="5" Y="5.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAEAAAAAAAIAQAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Classes\ExtendedHint.cs</FileName>
-    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="EasyEnglishWPF.Classes.FirstChoose" BaseTypeListCollapsed="true">
-    <Position X="22.5" Y="2" Width="1.5" />
+    <Position X="25.75" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Classes\FirstChoose.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="EasyEnglishWPF.Classes.HintEnglish">
+    <Position X="9.5" Y="15" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAgAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\HintEnglish.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EasyEnglishWPF.Classes.HintPolish">
+    <Position X="12.75" Y="15" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAgAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\HintPolish.cs</FileName>
+    </TypeIdentifier>
   </Class>
   <Class Name="EasyEnglishWPF.Classes.LastChoose" BaseTypeListCollapsed="true">
-    <Position X="24.25" Y="2" Width="1.5" />
+    <Position X="22.25" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Classes\LastChoose.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
+    <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="EasyEnglishWPF.Classes.LearnMode" BaseTypeListCollapsed="true">
-    <Position X="20.25" Y="6.25" Width="1.5" />
+    <Position X="15.25" Y="10" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAIAAAAAAAAQA=</HashCode>
       <FileName>Classes\LearnMode.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
+    <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="EasyEnglishWPF.Classes.Lecturer">
-    <Position X="14.75" Y="5.5" Width="1.5" />
+    <Position X="19.25" Y="10" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAASAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Classes\Lecturer.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="EasyEnglishWPF.Classes.Question">
-    <Position X="6" Y="0.5" Width="1.75" />
+  <Class Name="EasyEnglishWPF.Classes.OpenQuestion">
+    <Position X="6" Y="12.25" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>AAAEAAAAAACAgAAEEAACAAAABAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\OpenQuestion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EasyEnglishWPF.Classes.Question">
+    <Position X="6.75" Y="8.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAEAAAiAEAAAAQAAAAAAAAAAAAAAAI=</HashCode>
       <FileName>Classes\Question.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="EasyEnglishWPF.Classes.RandomChoose" BaseTypeListCollapsed="true">
-    <Position X="26" Y="2" Width="1.5" />
+    <Position X="24" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Classes\RandomChoose.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
+    <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="EasyEnglishWPF.Classes.RandomIterator" BaseTypeListCollapsed="true">
-    <Position X="22.25" Y="5" Width="1.5" />
+    <Position X="27.75" Y="2.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AgAAAAAAAAAABAAAAACAAAAAgAQQAAAAAAQAAAAAAAA=</HashCode>
       <FileName>Classes\RandomIterator.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="EasyEnglishWPF.Classes.ShortHint">
-    <Position X="7.25" Y="5.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAEAAAAAAAIAQAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Classes\ShortHint.cs</FileName>
-    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="EasyEnglishWPF.Classes.SingleChoiceTest">
-    <Position X="10" Y="4.5" Width="1.5" />
+    <Position X="10.25" Y="5" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAACAAAAAAQAAAAAAAAAAAAAEgAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAEAAAAAAAAA=</HashCode>
       <FileName>Classes\SingleChoiceTest.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
   </Class>
   <Class Name="EasyEnglishWPF.Classes.SingleTestReader" BaseTypeListCollapsed="true">
-    <Position X="20.75" Y="2" Width="1.5" />
+    <Position X="22.5" Y="9" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAA=</HashCode>
       <FileName>Classes\SingleTestReader.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
+    <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="EasyEnglishWPF.Classes.StandardIterator" BaseTypeListCollapsed="true">
-    <Position X="24" Y="5.25" Width="1.5" />
+    <Position X="31.25" Y="2.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AgAAAAAAAAAABAAAAACAAAAAAAAQAAAAAAAAAAABAAA=</HashCode>
       <FileName>Classes\StandardIterator.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
+    <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="EasyEnglishWPF.Classes.Test">
-    <Position X="11" Y="0.5" Width="2" />
+    <Position X="11" Y="0.5" Width="3.25" />
     <TypeIdentifier>
       <HashCode>AAAAAACAAIAADAAkEAAAAAAAAAEBAAAEAEAAAAAAAAA=</HashCode>
       <FileName>Classes\Test.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="EasyEnglishWPF.Classes.TestBuilder">
-    <Position X="10" Y="10" Width="1.5" />
+  <Class Name="EasyEnglishWPF.Classes.TestCloseBuilder" BaseTypeListCollapsed="true">
+    <Position X="17.5" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Classes\TestBuilder.cs</FileName>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAYAEAAAAAAAAA=</HashCode>
+      <FileName>Classes\TestCloseBuilder.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="EasyEnglishWPF.Classes.TestMode" BaseTypeListCollapsed="true">
-    <Position X="18.5" Y="6.25" Width="1.5" />
+    <Position X="17.25" Y="10" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAIAAAAAAAAQA=</HashCode>
       <FileName>Classes\TestMode.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="EasyEnglishWPF.Classes.TestOpenBuilder" BaseTypeListCollapsed="true">
+    <Position X="15.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAYAEAAAAAAAAA=</HashCode>
+      <FileName>Classes\TestOpenBuilder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="EasyEnglishWPF.Classes.User">
-    <Position X="14.75" Y="1.5" Width="1.5" />
+    <Position X="19.5" Y="1" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AKAAAAAAAAACBIAIAAAAgAAAAAAIAAAAIAAAAAAAAgA=</HashCode>
+      <HashCode>IKAAAAAAAAAABIAAAAAAgAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
       <FileName>Classes\User.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="EasyEnglishWPF.Classes.WriteAnswerTest">
-    <Position X="12.25" Y="4.5" Width="1.5" />
+    <Position X="12.75" Y="5" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAACAAAAAAQAAAAAAAAAAAAAEgAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAEgAAAAAAAA=</HashCode>
       <FileName>Classes\WriteAnswerTest.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
   </Class>
-  <Class Name="EasyEnglishWPF.Patterns.Builder">
-    <Position X="10" Y="7.5" Width="1.5" />
+  <Class Name="EasyEnglishWPF.Classes.WriteTestReader" BaseTypeListCollapsed="true">
+    <Position X="25" Y="9" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAIAAEAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
-      <FileName>Patterns\Builder.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>Classes\WriteTestReader.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="EasyEnglishWPF.Patterns.AbstractFactory">
+    <Position X="3.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Patterns\AbstractFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EasyEnglishWPF.Patterns.FactoryEasy">
+    <Position X="0.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Patterns\FactoryEasy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EasyEnglishWPF.Patterns.FactoryHard">
+    <Position X="2.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Patterns\FactoryHard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EasyEnglishWPF.Patterns.FactoryNormal">
+    <Position X="5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Patterns\FactoryNormal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EasyEnglishWPF.Patterns.FactoryVeryEasy">
+    <Position X="7.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Patterns\FactoryVeryEasy.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="EasyEnglishWPF.Patterns.Hint">
-    <Position X="6.25" Y="3.5" Width="1.5" />
+    <Position X="11.75" Y="12.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAACAAAAAAAAAEAAAgAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Patterns\Hint.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Interface Name="EasyEnglishWPF.Patterns.IAbstractFactory">
-    <Position X="9.25" Y="3" Width="1.5" />
+  <Class Name="EasyEnglishWPF.Patterns.Level">
+    <Position X="3.5" Y="0.5" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Patterns\IAbstractFactory.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Patterns\Level.cs</FileName>
     </TypeIdentifier>
-  </Interface>
-  <Interface Name="EasyEnglishWPF.Patterns.IAggregate">
-    <Position X="17" Y="1.25" Width="1.5" />
+  </Class>
+  <Class Name="EasyEnglishWPF.Patterns.LevelEasy">
+    <Position X="5" Y="2.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Patterns\LevelEasy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EasyEnglishWPF.Patterns.LevelHard">
+    <Position X="7.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Patterns\LevelHard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EasyEnglishWPF.Patterns.LevelNormal">
+    <Position X="0.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Patterns\LevelNormal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EasyEnglishWPF.Patterns.LevelVeryEasy">
+    <Position X="2.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Patterns\LevelVeryEasy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="EasyEnglishWPF.Patterns.IAggregate">
+    <Position X="28.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Patterns\IAggregate.cs</FileName>
     </TypeIdentifier>
   </Interface>
+  <Interface Name="EasyEnglishWPF.Patterns.IBuilder">
+    <Position X="16.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAQAEAAAAAAAAA=</HashCode>
+      <FileName>Patterns\IBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
   <Interface Name="EasyEnglishWPF.Patterns.IChoose">
-    <Position X="24" Y="0.75" Width="1.5" />
+    <Position X="24.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Patterns\IChoose.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="EasyEnglishWPF.Patterns.ICommand">
-    <Position X="19.5" Y="4.5" Width="1.5" />
+    <Position X="17.75" Y="8.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
       <FileName>Patterns\ICommand.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="EasyEnglishWPF.Patterns.IIterator">
-    <Position X="24" Y="3.5" Width="1.5" />
+    <Position X="31.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AgAAAAAAAAAAAAAAAACAAAAAAAAQAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Patterns\IIterator.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="EasyEnglishWPF.Patterns.ILevel">
-    <Position X="9.25" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Patterns\ILevel.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
   <Interface Name="EasyEnglishWPF.Patterns.ITestDBReader">
-    <Position X="19.5" Y="0.5" Width="1.5" />
+    <Position X="23.75" Y="7.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAA=</HashCode>
       <FileName>Patterns\ITestDBReader.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="EasyEnglishWPF.Patterns.IType">
-    <Position X="13.25" Y="0.5" Width="1.5" />
+    <Position X="28.25" Y="8.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Patterns\IType.cs</FileName>
