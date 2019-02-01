@@ -22,6 +22,7 @@ namespace EasyEnglishWPF.Pages
     /// </summary>
     public partial class StudyModeWindow : UserControl, ISwitchable
     {
+        private Patterns.ICommand command;
         private Random random = new Random();
         private string way = "pol->ang";
         public Test test;
@@ -32,6 +33,8 @@ namespace EasyEnglishWPF.Pages
         public StudyModeWindow(ref User user)
         {
             InitializeComponent();
+            command = new TestMode(user);
+            command.Execute();
             var tmp = random.Next(1, 4);
             IBuilder builder = new TestOpenBuilder(
                     tmp == 1 ? new FactoryVeryEasy() :
