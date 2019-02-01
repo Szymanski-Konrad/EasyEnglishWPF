@@ -161,7 +161,6 @@
     <Compile Include="Patterns\ICommand.cs" />
     <Compile Include="Patterns\Hint.cs" />
     <Compile Include="Patterns\AbstractFactory.cs" />
-    <Compile Include="Patterns\Builder.cs" />
     <Compile Include="Patterns\IAggregate.cs" />
     <Compile Include="Patterns\IChoose.cs" />
     <Compile Include="Patterns\IIterator.cs" />
