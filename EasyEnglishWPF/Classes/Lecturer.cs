@@ -1,4 +1,4 @@
-﻿using EasyEnglishWPF.Patterns;
+﻿ using EasyEnglishWPF.Patterns;
 using System;
 using System.Collections.Generic;
 using System.Linq;

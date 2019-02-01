@@ -12,11 +12,11 @@ namespace EasyEnglishWPF.Patterns
     /// </summary>
     public class Hint : Question
     {
-        protected new Question question;
+        protected new Question quest;
 
         public Hint(Question q) : base(q.ID, q.question, q.answer)
         {
-            question = q;    
+            quest = q;    
         }
 
         public override string GetHint()

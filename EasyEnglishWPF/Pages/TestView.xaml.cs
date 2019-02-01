@@ -88,18 +88,19 @@ namespace EasyEnglishWPF.Pages
                     if (way == "pol->ang")
                     {
                         question = new HintPolish(question, Database.GetPolishHint(question.ID));
-                        PolishOpen.ToolTip = (question as HintPolish).GetHint();
+                        Polish.ToolTip = (question as HintPolish).GetHint();
                     }
                     else
                     {
                         question.ChangeSolvingWay();
                         question = new HintEnglish(question, Database.GetEnglishHint(question.ID));
-                        PolishOpen.ToolTip = (question as HintEnglish).GetHint();
+                        Polish.ToolTip = (question as HintEnglish).GetHint();
                     }
 
-                    (question as CloseQuestion).GetWrongAnswers(way == "pol->ang" ? true : false, test.level.Nubmer + 1, test.level.Nubmer);
-                    PopulateClosedAnswers((question as CloseQuestion).wrongAnswers);
-                    PolishOpen.Content = question.question;
+
+                    (iterator.Current() as CloseQuestion).GetWrongAnswers(way == "pol->ang" ? false : true, test.level.Nubmer + 1, test.level.Nubmer);
+                    PopulateClosedAnswers((iterator.Current() as CloseQuestion).wrongAnswers);
+                    Polish.Content = question.question;
                 }
             }
         }
@@ -143,10 +144,11 @@ namespace EasyEnglishWPF.Pages
 
         private void Answer_Click(object sender, RoutedEventArgs e)
         {
+            if (iterator.Current().CheckAnswer(selected_closed))
+                test.IncreasePoints();
+
             if (iterator.HasNext())
             {
-                if (iterator.Current().CheckAnswer(selected_closed))
-                    test.IncreasePoints();
 
                 Question question = iterator.Next();
                 if (way == "pol->ang")
@@ -159,9 +161,9 @@ namespace EasyEnglishWPF.Pages
                 //sprawdzić czy działa
                 Polish.ToolTip = (question as Hint).GetHint();
                 Polish.Content = question.question;
-                (question as CloseQuestion).GetWrongAnswers(way == "pol->ang" ? true : false, test.level.Nubmer + 1, test.level.Nubmer);
-                PopulateClosedAnswers((question as CloseQuestion).wrongAnswers);
-                PolishOpen.Content = question.question;
+                (iterator.Current() as CloseQuestion).GetWrongAnswers(way == "pol->ang" ? false : true, test.level.Nubmer + 1, test.level.Nubmer);
+                PopulateClosedAnswers((iterator.Current() as CloseQuestion).wrongAnswers);
+                Polish.Content = question.question;
             }
             else
             {
@@ -177,11 +179,12 @@ namespace EasyEnglishWPF.Pages
 
         private void AnswerOpen_Click(object sender, RoutedEventArgs e)
         {
+            if (iterator.Current().CheckAnswer(Answer_Eng.Text))
+                test.IncreasePoints();
+
             if (iterator.HasNext())
             {
-                if (iterator.Current().CheckAnswer(selected_closed))
-                    test.IncreasePoints();
-
+            
                 Question question = iterator.Next();
                 if (way == "pol->ang")
                     question = new HintPolish(question, Database.GetPolishHint(question.ID));
@@ -194,6 +197,7 @@ namespace EasyEnglishWPF.Pages
                 Polish.ToolTip = (question as Hint).GetHint();
                 Polish.Content = question.question;
                 PolishOpen.Content = question.question;
+                Answer_Eng.Text = String.Empty;
             }
             else
             {
