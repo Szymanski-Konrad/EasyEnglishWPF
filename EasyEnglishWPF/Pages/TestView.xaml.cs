@@ -73,7 +73,11 @@ namespace EasyEnglishWPF.Pages
             }
             else
             {
-                IBuilder builder = new TestCloseBuilder(new FactoryEasy(), strategy);
+                IBuilder builder = new TestCloseBuilder(
+                    skill == "2 odpowiedzi" ? new FactoryVeryEasy() :
+                    skill == "3 odpowiedzi" ? new FactoryEasy() :
+                    skill == "4 odpowiedzi" ? new FactoryNormal() : new FactoryHard() as AbstractFactory, 
+                    strategy);
                 user.MakeNewTest(builder);
                 this.test = builder.PrintTest();
                 Test.Visibility = Visibility.Visible;
@@ -184,7 +188,7 @@ namespace EasyEnglishWPF.Pages
 
             if (iterator.HasNext())
             {
-            
+
                 Question question = iterator.Next();
                 if (way == "pol->ang")
                     question = new HintPolish(question, Database.GetPolishHint(question.ID));
