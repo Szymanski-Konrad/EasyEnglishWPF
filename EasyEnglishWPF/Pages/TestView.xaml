@@ -13,10 +13,10 @@
             <Label Content="Rodzaj testu: " HorizontalAlignment="Left" Margin="25,111,0,0" VerticalAlignment="Top"/>
             <RadioButton Checked="Way_Checked" GroupName="way" Content="pol->ang" HorizontalAlignment="Left" Margin="146,75,0,0" VerticalAlignment="Top" IsChecked="True"/>
             <RadioButton Checked="Way_Checked" GroupName="way" Content="ang->pol" HorizontalAlignment="Left" Margin="249,75,0,0" VerticalAlignment="Top"/>
-            <RadioButton Checked="Skill_Checked" GroupName="skill" Content="Bardzo latwy" HorizontalAlignment="Left" Margin="146,157,0,0" VerticalAlignment="Top" IsChecked="True"/>
-            <RadioButton Checked="Skill_Checked" GroupName="skill" Content="łatwy" HorizontalAlignment="Left" Margin="249,157,0,0" VerticalAlignment="Top"/>
-            <RadioButton Checked="Skill_Checked" GroupName="skill" Content="średni" HorizontalAlignment="Left" Margin="353,157,0,0" VerticalAlignment="Top"/>
-            <RadioButton Checked="Skill_Checked" GroupName="skill" Content="trudny" HorizontalAlignment="Left" Margin="449,157,0,0" VerticalAlignment="Top"/>
+            <RadioButton Checked="Skill_Checked" GroupName="skill" Content="Bardzo łatwy" HorizontalAlignment="Left" Margin="146,157,0,0" VerticalAlignment="Top" IsChecked="True"/>
+            <RadioButton Checked="Skill_Checked" GroupName="skill" Content="Łatwy" HorizontalAlignment="Left" Margin="249,157,0,0" VerticalAlignment="Top"/>
+            <RadioButton Checked="Skill_Checked" GroupName="skill" Content="Średni" HorizontalAlignment="Left" Margin="353,157,0,0" VerticalAlignment="Top"/>
+            <RadioButton Checked="Skill_Checked" GroupName="skill" Content="Trudny" HorizontalAlignment="Left" Margin="449,157,0,0" VerticalAlignment="Top"/>
             <Button Content="Uruchom test" HorizontalAlignment="Left" Margin="311,269,0,0" VerticalAlignment="Top" Width="120" Height="40" Click="Run_Test"/>
             <Label Content="Strategia: " HorizontalAlignment="Left" Margin="24,203,0,0" VerticalAlignment="Top"/>
             <RadioButton Checked="Strategy_Checked" GroupName="strategy" Content="Pierwsze" Tag="first" HorizontalAlignment="Left" Margin="146,209,0,0" VerticalAlignment="Top" IsChecked="True"/>

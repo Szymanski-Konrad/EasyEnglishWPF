@@ -45,9 +45,13 @@ namespace EasyEnglishWPF.Pages
         {
             OptionGrid.Visibility = Visibility.Collapsed;
 
-            if (skill == "test otwarty")
+            if (type == "Otwarty")
             {
-                IBuilder builder = new TestOpenBuilder(new FactoryEasy(), strategy);
+                IBuilder builder = new TestOpenBuilder(
+                    skill == "Bardzo łatwy" ? new FactoryVeryEasy() :
+                    skill == "Łatwy" ? new FactoryEasy() :
+                    skill == "Średni" ? new FactoryNormal() : new FactoryHard() as AbstractFactory,
+                    strategy);
                 user.MakeNewTest(builder);
                 this.test = builder.PrintTest();
                 Open.Visibility = Visibility.Visible;
@@ -72,12 +76,12 @@ namespace EasyEnglishWPF.Pages
                     PolishOpen.Content = question.question;
                 }
             }
-            else
+            else if(type == "Zamkniety")
             {
                 IBuilder builder = new TestCloseBuilder(
-                    skill == "2 odpowiedzi" ? new FactoryVeryEasy() :
-                    skill == "3 odpowiedzi" ? new FactoryEasy() :
-                    skill == "4 odpowiedzi" ? new FactoryNormal() : new FactoryHard() as AbstractFactory, 
+                    skill == "Bardzo łatwy" ? new FactoryVeryEasy() :
+                    skill == "Łatwy" ? new FactoryEasy() :
+                    skill == "Średni" ? new FactoryNormal() : new FactoryHard() as AbstractFactory, 
                     strategy);
                 user.MakeNewTest(builder);
                 this.test = builder.PrintTest();
