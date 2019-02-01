@@ -165,7 +165,6 @@ namespace EasyEnglishWPF.Pages
 
             if (iterator.HasNext())
             {
-
                 Question question = iterator.Next();
                 if (way == "pol->ang")
                     question = new HintPolish(question, Database.GetPolishHint(question.ID));
