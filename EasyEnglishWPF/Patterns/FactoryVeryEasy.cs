@@ -11,7 +11,7 @@ namespace EasyEnglishWPF.Patterns
         public override Level GetLevel()
         {
             var level = new LevelVeryEasy();
-            level.Nubmer = 0;
+            level.Nubmer = 1;
             return level;
         }
     }
