@@ -51,7 +51,7 @@ namespace EasyEnglishWPF.Pages
                 this.test = builder.PrintTest();
                 Open.Visibility = Visibility.Visible;
                 ConcreteAggregate concreteAggregate = new ConcreteAggregate();
-                concreteAggregate.AddQuestions(test.questionChooseStrategy.GetQuestions("write", test.level));
+                concreteAggregate.AddQuestions(test.questionChooseStrategy.GetQuestions("write", test.level.Nubmer));
                 iterator = concreteAggregate.CreateIterator(random.Next(3));
 
                 if (iterator.HasNext())
@@ -78,7 +78,7 @@ namespace EasyEnglishWPF.Pages
                 this.test = builder.PrintTest();
                 Test.Visibility = Visibility.Visible;
                 ConcreteAggregate concreteAggregate = new ConcreteAggregate();
-                concreteAggregate.AddQuestions(test.questionChooseStrategy.GetQuestions("single", test.level));
+                concreteAggregate.AddQuestions(test.questionChooseStrategy.GetQuestions("single", test.level.Nubmer));
                 iterator = concreteAggregate.CreateIterator(random.Next(3));
 
                 if (iterator.HasNext())
@@ -97,7 +97,7 @@ namespace EasyEnglishWPF.Pages
                         PolishOpen.ToolTip = (question as HintEnglish).GetHint();
                     }
 
-                    (question as CloseQuestion).GetWrongAnswers(way == "pol->ang" ? true : false, test.level + 1, test.level);
+                    (question as CloseQuestion).GetWrongAnswers(way == "pol->ang" ? true : false, test.level.Nubmer + 1, test.level.Nubmer);
                     PopulateClosedAnswers((question as CloseQuestion).wrongAnswers);
                     PolishOpen.Content = question.question;
                 }
@@ -159,7 +159,7 @@ namespace EasyEnglishWPF.Pages
                 //sprawdzić czy działa
                 Polish.ToolTip = (question as Hint).GetHint();
                 Polish.Content = question.question;
-                (question as CloseQuestion).GetWrongAnswers(way == "pol->ang" ? true : false, test.level + 1, test.level);
+                (question as CloseQuestion).GetWrongAnswers(way == "pol->ang" ? true : false, test.level.Nubmer + 1, test.level.Nubmer);
                 PopulateClosedAnswers((question as CloseQuestion).wrongAnswers);
                 PolishOpen.Content = question.question;
             }

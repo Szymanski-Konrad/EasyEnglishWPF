@@ -16,7 +16,7 @@ namespace EasyEnglishWPF.Classes
 
         public void LoadQuestions()
         {
-            Questions = questionChooseStrategy.GetQuestions("write");
+            Questions = questionChooseStrategy.GetQuestions("write", level.Nubmer);
         }
 
         public override void IncreasePoints()

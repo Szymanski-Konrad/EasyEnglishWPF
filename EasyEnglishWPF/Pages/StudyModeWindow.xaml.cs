@@ -38,7 +38,7 @@ namespace EasyEnglishWPF.Pages
             //test = user.GetTest();
 
             ConcreteAggregate concreteAggregate = new ConcreteAggregate();
-            concreteAggregate.AddQuestions(test.questionChooseStrategy.GetQuestions("write", test.level));
+            concreteAggregate.AddQuestions(test.questionChooseStrategy.GetQuestions("write", test.level.Nubmer));
             iterator = concreteAggregate.CreateIterator(3);
 
             if (iterator.HasNext())
@@ -104,7 +104,7 @@ namespace EasyEnglishWPF.Pages
                 else
                 {
                     ConcreteAggregate concreteAggregate = new ConcreteAggregate();
-                    concreteAggregate.AddQuestions(test.questionChooseStrategy.GetQuestions("write", test.level));
+                    concreteAggregate.AddQuestions(test.questionChooseStrategy.GetQuestions("write", test.level.Nubmer));
                     iterator = concreteAggregate.CreateIterator(3);
                 }
                 canNext = false;
