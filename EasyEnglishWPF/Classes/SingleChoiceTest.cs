@@ -14,11 +14,6 @@ namespace EasyEnglishWPF.Classes
             testName = "Test jednokrotnego wyboru";
         }
 
-        public void LoadQuestions()
-        {
-            Questions = questionChooseStrategy.GetQuestions("single");
-        }
-
         public override void IncreasePoints()
         {
             points++;

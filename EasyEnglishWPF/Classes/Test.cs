@@ -15,7 +15,7 @@ namespace EasyEnglishWPF.Classes
         public IAggregate aggregate { get; set; }
         public int points = 0;
         
-
+    
         protected string testName = "test";
 
         public Level level { get; set; } 

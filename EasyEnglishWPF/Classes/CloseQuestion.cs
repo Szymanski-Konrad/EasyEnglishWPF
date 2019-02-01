@@ -9,7 +9,7 @@ namespace EasyEnglishWPF.Classes
 {
     public class CloseQuestion : Question
     {
-        List<string> wrongAnswers;
+        public List<string> wrongAnswers;
 
         public CloseQuestion()
         {
@@ -21,12 +21,12 @@ namespace EasyEnglishWPF.Classes
             wrongAnswers = new List<string>();
         }
 
-        public void GetWrongAnswers(bool polish, int number_of_answers)
+        public void GetWrongAnswers(bool polish, int number_of_answers, int lvl)
         {
             if (polish)
-                wrongAnswers = Database.LoadFakeAnswersPL(ID, number_of_answers);
+                wrongAnswers = Database.LoadFakeAnswersPL(ID, number_of_answers, lvl);
             else
-                wrongAnswers = Database.LoadFakeAnswersENG(ID, number_of_answers);
+                wrongAnswers = Database.LoadFakeAnswersENG(ID, number_of_answers, lvl);
         }
     }
 }

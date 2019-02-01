@@ -38,22 +38,23 @@ namespace EasyEnglishWPF.Pages
             //test = user.GetTest();
 
             ConcreteAggregate concreteAggregate = new ConcreteAggregate();
-            concreteAggregate.AddQuestions(test.questionChooseStrategy.GetQuestions("write"));
+            concreteAggregate.AddQuestions(test.questionChooseStrategy.GetQuestions("write", test.level));
             iterator = concreteAggregate.CreateIterator(3);
 
             if (iterator.HasNext())
             {
                 Question question = (Question)iterator.Next();
-                question = new ShortHint(question, Database.GetSimpleHint(question.ID));
-                questionLabel.ToolTip = (question as ShortHint).GetHint();
                 if (way == "pol->ang")
                 {
                     questionLabel.Content = question.question;
+                    question = new HintPolish(question, Database.GetPolishHint(question.ID));
                 }
                 else
                 {
                     questionLabel.Content = question.answer;
+                    question = new HintEnglish(question, Database.GetEnglishHint(question.ID));
                 }
+                questionLabel.ToolTip = (question as HintPolish).GetHint();
             }
         }
         public void UtilizeState(object state)
@@ -68,31 +69,15 @@ namespace EasyEnglishWPF.Pages
 
         private void CheckBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (way == "pol->ang")
+            if (iterator.Current().answer == answerBox.Text)
             {
-                if (iterator.Current().answer == answerBox.Text)
-                {
-                    checkBtn.Background = Brushes.Green;
-                    canNext = true;
-                }
-                else
-                {
-                    checkBtn.Background = Brushes.Red;
-                    canNext = false;
-                }
+                checkBtn.Background = Brushes.Green;
+                canNext = true;
             }
-            else if (way == "ang->pol")
+            else
             {
-                if (iterator.Current().answer == answerBox.Text)
-                {
-                    checkBtn.Background = Brushes.Green;
-                    canNext = true;
-                }
-                else
-                {
-                    checkBtn.Background = Brushes.Red;
-                    canNext = false;
-                }
+                checkBtn.Background = Brushes.Red;
+                canNext = false;
             }
         }
 
@@ -104,21 +89,22 @@ namespace EasyEnglishWPF.Pages
                 if (iterator.HasNext())
                 {
                     Question question = (Question)iterator.Next();
-                    question = new ShortHint(question, Database.GetSimpleHint(question.ID));
-                    questionLabel.ToolTip = (question as ShortHint).GetHint();
                     if (way == "pol->ang")
                     {
                         questionLabel.Content = question.question;
+                        question = new HintPolish(question, Database.GetPolishHint(question.ID));
                     }
                     else
                     {
                         questionLabel.Content = question.answer;
+                        question = new HintEnglish(question, Database.GetEnglishHint(question.ID));
                     }
+                    questionLabel.ToolTip = (question as HintPolish).GetHint();
                 }
                 else
                 {
                     ConcreteAggregate concreteAggregate = new ConcreteAggregate();
-                    concreteAggregate.AddQuestions(test.questionChooseStrategy.GetQuestions("write"));
+                    concreteAggregate.AddQuestions(test.questionChooseStrategy.GetQuestions("write", test.level));
                     iterator = concreteAggregate.CreateIterator(3);
                 }
                 canNext = false;
@@ -136,36 +122,25 @@ namespace EasyEnglishWPF.Pages
             if (iterator != null)
             {
                 Question question = (Question)iterator.Current();
-                question = new ShortHint(question, Database.GetSimpleHint(question.ID));
-                questionLabel.ToolTip = question.GetHint();
+                question.ChangeSolvingWay();
 
                 if (way == "pol->ang")
                 {
-                    questionLabel.Content = question.question;
-                    if (iterator.Current().answer == answerBox.Text)
-                    {
-                        checkBtn.Background = Brushes.Green;
-                        canNext = true;
-                    }
-                    else
-                    {
-                        checkBtn.Background = Brushes.Red;
-                        canNext = false;
-                    }
+                    question = new HintPolish(question, Database.GetPolishHint(question.ID));
+                    questionLabel.ToolTip = (question as HintPolish).GetHint();
+                    
+                }
+
+                questionLabel.Content = question.question;
+                if (iterator.Current().answer == answerBox.Text)
+                {
+                    checkBtn.Background = Brushes.Green;
+                    canNext = true;
                 }
                 else
                 {
-                    questionLabel.Content = question.question;
-                    if (iterator.Current().answer == answerBox.Text)
-                    {
-                        checkBtn.Background = Brushes.Green;
-                        canNext = true;
-                    }
-                    else
-                    {
-                        checkBtn.Background = Brushes.Red;
-                        canNext = false;
-                    }
+                    checkBtn.Background = Brushes.Red;
+                    canNext = false;
                 }
             }
         }

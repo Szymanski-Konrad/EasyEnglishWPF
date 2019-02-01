@@ -12,6 +12,6 @@ namespace EasyEnglishWPF.Patterns
     /// </summary>
     public interface ITestDBReader
     {
-        List<Question> ReadTestData(string buildTestType);
+        List<Question> ReadTestData(string buildTestType, int lvl);
     }
 }

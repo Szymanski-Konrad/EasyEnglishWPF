@@ -9,14 +9,14 @@ namespace EasyEnglishWPF.Classes
 {
     class FirstChoose : IChoose
     {
-        public List<Question> GetQuestions(string reader_type)
+        public List<Question> GetQuestions(string reader_type, int lvl)
         {
             if (reader_type == "single")
             {
-                return new SingleTestReader().ReadTestData("first");
+                return new SingleTestReader().ReadTestData("first", lvl);
             }
             else
-                return new WriteTestReader().ReadTestData("first");
+                return new WriteTestReader().ReadTestData("first", lvl);
         }
     }
 }

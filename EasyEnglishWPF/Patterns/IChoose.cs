@@ -15,6 +15,6 @@ namespace EasyEnglishWPF.Patterns
     public interface IChoose
     {
     
-        List<Question> GetQuestions(string reader_type);
+        List<Question> GetQuestions(string reader_type, int lvl);
     }
 }

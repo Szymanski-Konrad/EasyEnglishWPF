@@ -9,12 +9,12 @@ namespace EasyEnglishWPF.Classes
 {
     class LastChoose : IChoose
     {
-        public List<Question> GetQuestions(string reader_type)
+        public List<Question> GetQuestions(string reader_type, int lvl)
         {
             if (reader_type == "single")
-                return new SingleTestReader().ReadTestData("last");
+                return new SingleTestReader().ReadTestData("last", lvl);
             else
-                return new WriteTestReader().ReadTestData("last");
+                return new WriteTestReader().ReadTestData("last", lvl);
         }
     }
 }
