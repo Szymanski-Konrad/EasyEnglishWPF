@@ -22,6 +22,7 @@ namespace EasyEnglishWPF.Pages
     /// </summary>
     public partial class TestView : UserControl
     {
+        private Patterns.ICommand command;
         private string skill = "2 odpowiedzi";
         private string way = "pol->ang";
         private string strategy = "first";
@@ -34,15 +35,17 @@ namespace EasyEnglishWPF.Pages
         private IIterator iterator;
         private Random random;
 
-        public TestView(ref User u)
+        public TestView(ref User user)
         {
             InitializeComponent();
-            user = u;
+            this.user = user;
+            command = new TestMode(user);
             random = new Random();
         }
 
         private void Run_Test(object sender, RoutedEventArgs e)
         {
+            command.Execute();
             OptionGrid.Visibility = Visibility.Collapsed;
 
             if (type == "Otwarty")
